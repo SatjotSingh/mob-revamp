@@ -1,0 +1,31 @@
+{
+	"schemaVersion": 1,
+	"id": "daplow-mob_revamp",
+	"version": "${version}",
+	"name": "Daplow Mob_Revamp",
+	"description": "This mob revamps minecraft mobs to be more useful (DAPLOW)!",
+	"authors": [
+		"Daplow"
+	],
+	"contact": {
+		"homepage": "https://www.curseforge.com/minecraft/mc-mods/daplows-mob-revamp",
+		"sources": ""
+	},
+	"license": "MIT",
+	"icon": "assets/daplow-mob_revamp/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": ["net.daplow.mob_revamp.DaplowMain"],
+		"client": ["net.daplow.mob_revamp.DaplowMainClient"]
+
+	},
+	"mixins": [
+		"daplow-mob_revamp.mixins.json"
+	],
+	"depends": {
+		"fabricloader": ">=0.18.3",
+		"minecraft": "~1.19.2",
+		"java": ">=17",
+		"fabric-api": "*"
+	}
+}

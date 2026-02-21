@@ -1,0 +1,14 @@
+{
+  "structures": [
+    {
+      "structure": "daplow-mob_revamp:piglin_mine",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "salt": 1642136474,
+    "spacing": 10,
+    "separation": 6,
+    "type": "minecraft:random_spread"
+  }
+}

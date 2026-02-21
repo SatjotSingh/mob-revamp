@@ -1,0 +1,6 @@
+{
+  "parent": "block/leaves",
+  "textures": {
+    "all": "daplow-mob_revamp:block/flowering_jungle_leaf"
+  }
+}

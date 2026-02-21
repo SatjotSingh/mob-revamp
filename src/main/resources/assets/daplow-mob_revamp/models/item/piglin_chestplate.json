@@ -1,0 +1,6 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "daplow-mob_revamp:item/piglin_chestplate"
+  }
+}

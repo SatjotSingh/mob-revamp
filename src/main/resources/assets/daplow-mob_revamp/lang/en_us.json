@@ -1,0 +1,32 @@
+{
+
+  "itemGroup.daplow-mob_revamp.daplow_mob_revamp_tab" : "Daplow's Mob Revamp Items",
+
+  "item.daplow-mob_revamp.bat_wing": "Bat Wing",
+  "item.daplow-mob_revamp.wing_suit": "Wing Suit",
+  "item.daplow-mob_revamp.winged_elytra": "Colored Elytra",
+  "item.minecraft.potion.effect.bat_potion" : "Potion of Hearing",
+  "item.minecraft.splash_potion.effect.bat_potion" : "Splash Potion of Hearing",
+  "item.minecraft.tipped_arrow.effect.bat_potion" : "Arrow of Hearing",
+  "item.minecraft.lingering_potion.effect.bat_potion" : "Lingering Potion of Hearing",
+  "effect.daplow-mob_revamp.echolocation" : "Echo Location",
+
+
+
+  "item.daplow-mob_revamp.parrot_feather": "Parrot Feather",
+  "item.daplow-mob_revamp.bamboo_flute": "Parrot Flute",
+  "block.daplow-mob_revamp.flowered_jungle_leaf" : "Flowering Jungle Leaves",
+
+
+  "item.minecraft.potion.effect.squid_potion" : "Potion of Squid",
+  "item.minecraft.splash_potion.effect.squid_potion" : "Splash Potion of Squid",
+  "item.minecraft.tipped_arrow.effect.squid_potion" : "Arrow of Squid",
+  "item.minecraft.lingering_potion.effect.squid_potion" : "Lingering Potion of Squid",
+  "effect.daplow-mob_revamp.inked" : "Ink Effect",
+  "item.daplow-mob_revamp.squid_pearl": "Squid Pearl",
+  "item.daplow-mob_revamp.deep_navy_blue": "Navy Blue Dye",
+
+
+
+  "item.daplow-mob_revamp.piglin_chestplate": "Piglin Chestplate"
+}

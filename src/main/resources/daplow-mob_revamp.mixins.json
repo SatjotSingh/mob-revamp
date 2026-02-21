@@ -1,0 +1,16 @@
+{
+	"required": true,
+	"package": "net.daplow.mob_revamp.mixin",
+	"compatibilityLevel": "JAVA_17",
+	"mixins": [
+		"ElytraFeatureRendererMixin",
+		"PiglinBruteBrainMixin",
+		"PiglinBrainMixin"
+	],
+	"injectors": {
+		"defaultRequire": 1
+	},
+	"overwrites": {
+		"requireAnnotations": true
+	}
+}

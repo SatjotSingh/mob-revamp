@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "BSB",
+    " S ",
+    "S S"
+  ],
+  "key": {
+    "B": {
+      "item": "daplow-mob_revamp:bat_wing"
+    },
+    "S": {
+      "item": "minecraft:stick"
+    }
+  },
+  "result": {
+    "item": "daplow-mob_revamp:wing_suit",
+    "count": 1
+  }
+}

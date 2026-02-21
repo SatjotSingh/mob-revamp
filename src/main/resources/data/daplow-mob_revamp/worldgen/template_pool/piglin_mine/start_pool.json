@@ -1,0 +1,15 @@
+{
+  "name": "daplow-mob_revamp:piglin_mine/start_pool",
+  "fallback": "minecraft:empty",
+  "elements": [
+    {
+      "weight": 1,
+      "element": {
+        "location": "daplow-mob_revamp:piglin_mine",
+        "processors": "daplow-mob_revamp:piglin_mine_processor",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    }
+  ]
+}

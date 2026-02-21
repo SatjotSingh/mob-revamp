@@ -1,0 +1,9 @@
+
+{
+  "processors": [
+    {
+      "mossiness": 0.15,
+      "processor_type": "daplow-mob_revamp:piglin_mine_processor"
+    }
+  ]
+}

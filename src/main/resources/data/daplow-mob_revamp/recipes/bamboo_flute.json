@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "SB",
+    "S "
+  ],
+  "key": {
+    "B": {
+      "item": "daplow-mob_revamp:parrot_feather"
+    },
+    "S": {
+      "item": "minecraft:bamboo"
+    }
+  },
+  "result": {
+    "item": "daplow-mob_revamp:bamboo_flute",
+    "count": 1
+  }
+}

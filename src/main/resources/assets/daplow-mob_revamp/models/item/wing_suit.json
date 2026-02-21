@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "daplow-mob_revamp:item/wing_suit_bat",
+    "layer1": "daplow-mob_revamp:item/wing_suit_stick"
+  }
+}
