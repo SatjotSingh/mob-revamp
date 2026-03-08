@@ -1,0 +1,8 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "daplow-mob_revamp:item/guardian_eye_background",
+    "layer1": "daplow-mob_revamp:item/guardian_eye_front"
+
+  }
+}

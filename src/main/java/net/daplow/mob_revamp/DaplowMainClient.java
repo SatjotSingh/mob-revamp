@@ -15,10 +15,12 @@ import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.item.ModelPredicateProviderRegistry;
 import net.minecraft.client.render.GameRenderer;
 import net.minecraft.client.util.math.MatrixStack;
+import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Items;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.nbt.NbtElement;
+import net.minecraft.potion.PotionUtil;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.MathHelper;
 
@@ -74,9 +76,60 @@ public class DaplowMainClient implements ClientModInitializer {
 
 
 
-        //      LEAF TINT  (1st one for world, 2nd one for inventory)
+        // Guardian Mod
+        ColorProviderRegistry.ITEM.register((stack, tintIndex) -> {
+
+                if (tintIndex == 1) { // stem layer
+                    if (!stack.hasNbt()) return 0xFFFFFF;
+                    String stem = stack.getNbt().getString("Eye_Variant");
+                    if ("gold".equals(stem)) return 0xFFD700;
+                    if ("iron".equals(stem)) return 0xBEBEBE;
+                    if ("red".equals(stem)) return 0xFF0000;
+                    if ("blue".equals(stem)) return 0x0000FF;
+                    if ("green".equals(stem)) return 0x00FF00;
+                    if ("yellow".equals(stem)) return 0xFFFF00;
+                    if ("orange".equals(stem)) return 0xFFA500;
+                    if ("purple".equals(stem)) return 0x800080;
+
+                    return 0x000000;
+                }
+                return 0xFFFFFF;
+        }, ModItems.GUARDIAN_EYE);
 
 
+        ColorProviderRegistry.ITEM.register((stack, tintIndex) -> {
+
+            if (tintIndex == 1) { // stem layer
+                if (!stack.hasNbt()) return 0xFFFFFF;
+                Boolean golded = stack.getNbt().getBoolean("gold_variant");
+                if (golded) return 0xFFD700;
+
+                String stem = stack.getNbt().getString("Eye_Variant");
+                if ("gold".equals(stem)) return 0xFFD700;
+                if ("iron".equals(stem)) return 0xBEBEBE;
+                if ("red".equals(stem)) return 0xFF0000;
+                if ("blue".equals(stem)) return 0x0000FF;
+                if ("green".equals(stem)) return 0x00FF00;
+                if ("yellow".equals(stem)) return 0xFFFF00;
+                if ("orange".equals(stem)) return 0xFFA500;
+                if ("purple".equals(stem)) return 0x800080;
+
+                return 0x000000;
+            }
+            /*
+            if (tintIndex == 0) {
+                if (!stack.hasNbt()) return 0xFFFFFF;
+                Boolean golded = stack.getNbt().getBoolean("gold_variant");
+                if (golded) return 0xFFD700;
+
+
+            }
+            
+             */
+            return 0xFFFFFF; // base arrow
+
+
+        }, ModItems.GUARDIAN_STAFF);
     }
 
 
@@ -91,7 +144,12 @@ public class DaplowMainClient implements ClientModInitializer {
         int centerY = screenHeight / 2;
 
         if (player.hasStatusEffect(ModEffects.SQUID_POTION)) {
-
+            int color = 0xFF000000; // solid black
+            StatusEffectInstance instance = player.getStatusEffect(ModEffects.SQUID_POTION);
+            int amplifier = instance.getAmplifier();
+            if (amplifier == 1) {
+                color = 0xFF00FFCC;
+            }
             // Spawn more small blobs near crosshair
             if (inkBlobs.size() < 35) { // max 20 blobs at a time
                 int offsetX = random.nextInt(300) - 150; // +/- 80 pixels
@@ -100,9 +158,23 @@ public class DaplowMainClient implements ClientModInitializer {
                 inkBlobs.add(new InkBlob(centerX + offsetX, centerY + offsetY, size));
             }
 
-            // Render all blobs (static, fully black)
+            // Render all blobs
             for (InkBlob blob : inkBlobs) {
-                int color = 0xFF000000; // solid black
+                if (amplifier == 1) {
+                    DrawableHelper.fill(
+                            matrices,
+                            blob.x - blob.size/2 - 5,
+                            blob.y - blob.size/2 - 5,
+                            blob.x + blob.size/2 + 5,
+                            blob.y + blob.size/2 + 5,
+                            0x5500FFCC
+                    );
+                    float time = (System.currentTimeMillis() % 1000) / 1000f; // 0.0 → 1.0 over 1 second
+                    int alpha = (int)(150 + Math.sin(time * Math.PI * 2 + blob.phase) * 70); // alpha oscillates 80 → 220
+                    alpha += random.nextInt(10)-5;
+                    color = (alpha << 24) | 0x00FFCC; // turquoise with variable alpha
+
+                }
                 DrawableHelper.fill(
                         matrices,
                         blob.x - blob.size / 2,
@@ -111,6 +183,7 @@ public class DaplowMainClient implements ClientModInitializer {
                         blob.y + blob.size / 2,
                         color
                 );
+
             }
 
         } else {
@@ -123,11 +196,14 @@ public class DaplowMainClient implements ClientModInitializer {
     private static class InkBlob {
         int x, y;
         int size;
+        float phase;
 
         InkBlob(int x, int y, int size) {
             this.x = x;
             this.y = y;
             this.size = size;
+            this.phase = (float)Math.random() * (float)Math.PI * 2; // 0 → 2π
+
         }
     }
 

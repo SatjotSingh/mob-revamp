@@ -71,8 +71,6 @@
         }
 
 
-        // CHECKOUT NEW CODE IN GOOGLE 
-
         @Override
         public Optional<StructurePosition> getStructurePosition(Context context) {
 
@@ -86,19 +84,18 @@
                     context.world(),
                     context.noiseConfig()
             );
-
+            // Finding best Y height.
             int bottomY = context.world().getBottomY();
-            int flatRadius = 4; // area to check
+            int flatRadius = 4;
             int minY = Integer.MAX_VALUE;
             int maxY = Integer.MIN_VALUE;
 
-            // --- SCAN AREA FOR FLATNESS ---
             for (int dx = -flatRadius; dx <= flatRadius; dx++) {
                 for (int dz = -flatRadius; dz <= flatRadius; dz++) {
                     int checkX = x + dx;
                     int checkZ = z + dz;
 
-                    int checkY = 100; // start high, scan down
+                    int checkY = 100;
                     while (checkY > bottomY + 10) {
                         BlockState state = column.getState(checkY);
                         if (!state.isAir() && !state.isOf(Blocks.BEDROCK) && state.getFluidState().isEmpty()) {
@@ -112,32 +109,28 @@
                 }
             }
 
-            // --- FLATNESS CHECK ---
             if (maxY - minY > 3) {
-                System.out.println("PiglinMineStructure SKIPPED in chunk " + chunkPos + " (terrain too uneven)");
+                //System.out.println("PiglinMineStructure SKIPPED in chunk " + chunkPos + " (terrain too uneven)");
                 return Optional.empty();
             }
 
-            // --- FINAL SURFACE POSITION ---
             int surfaceY = (minY + maxY) / 2;
             BlockPos pos = new BlockPos(x, surfaceY + 1, z);
 
-            // --- OPTIONAL: CHECK IF MAIN TEMPLATE EXISTS ---
             StructureTemplateManager manager = context.structureTemplateManager();
             StructureTemplate template = manager.getTemplateOrBlank(new Identifier(MOD_ID, "piglin_mine"));
             if (template == null) {
-                System.out.println("PiglinMineStructure SKIPPED in chunk " + chunkPos + " (template missing)");
+                //System.out.println("PiglinMineStructure SKIPPED in chunk " + chunkPos + " (template missing)");
                 return Optional.empty();
             }
 
-            System.out.println("PiglinMineStructure WILL spawn in chunk " + chunkPos + " at " + pos);
+            //System.out.println("PiglinMineStructure WILL spawn in chunk " + chunkPos + " at " + pos);
 
-            // --- RETURN STRUCTURE POSITION ---
             return Optional.of(new StructurePosition(pos, collector -> {
                 collector.addPiece(
                         new PiglinMinePiece(
                                 manager,
-                                new Identifier(MOD_ID, "piglin_mine"), // template id
+                                new Identifier(MOD_ID, "piglin_mine"),
                                 pos,
                                 BlockRotation.NONE,
                                 new StructurePlacementData()

@@ -1,22 +1,14 @@
-package net.daplow.mob_revamp.other;
+package net.daplow.mob_revamp.util.other;
 
 import net.daplow.mob_revamp.items.ModItems;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.ItemEntity;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.passive.ParrotEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.world.ServerWorld;
-import net.minecraft.util.TypeFilter;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.Box;
 
-import java.util.List;
 import java.util.Random;
-import java.util.function.Predicate;
 
 // For parrots to randomly drop the feather
 public class ParrotFeatherDrop {

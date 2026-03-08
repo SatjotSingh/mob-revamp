@@ -1,21 +1,24 @@
-package net.daplow.mob_revamp.other;
+
+package net.daplow.mob_revamp.util.Recipes;
 
 import net.daplow.mob_revamp.items.ModItems;
 import net.minecraft.inventory.CraftingInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
+import net.minecraft.recipe.Ingredient;
 import net.minecraft.recipe.RecipeSerializer;
+import net.minecraft.recipe.ShapedRecipe;
 import net.minecraft.recipe.SpecialCraftingRecipe;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.world.World;
 
 public class WingSuitElytraRecipe extends SpecialCraftingRecipe {
 
+
     public WingSuitElytraRecipe(Identifier id) {
         super(id);
     }
-
-
 
     @Override
     public ItemStack craft(CraftingInventory inv) {
@@ -38,6 +41,8 @@ public class WingSuitElytraRecipe extends SpecialCraftingRecipe {
 
         return result;
     }
+
+
     @Override
     public boolean matches(CraftingInventory inventory, World world) {
         boolean hasWingSuit = false;

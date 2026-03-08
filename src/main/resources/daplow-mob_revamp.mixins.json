@@ -5,7 +5,9 @@
 	"mixins": [
 		"ElytraFeatureRendererMixin",
 		"PiglinBruteBrainMixin",
-		"PiglinBrainMixin"
+		"PiglinBrainMixin",
+      "SquidEntityMixin",
+		"GuardianStaffRendererMixin"
 	],
 	"injectors": {
 		"defaultRequire": 1

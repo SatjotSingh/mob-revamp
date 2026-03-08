@@ -26,7 +26,11 @@ public class ModPotions {
                     new Identifier(DaplowMain.MOD_ID, "squid_potion"),
                     new Potion(new StatusEffectInstance(
                             ModEffects.SQUID_POTION,
-                            20 * 10
+                            20 * 10,
+                            0,
+                            false,
+                            false,
+                            true
                     ))
             );
 

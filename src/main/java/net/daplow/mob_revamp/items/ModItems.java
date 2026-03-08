@@ -2,13 +2,11 @@ package net.daplow.mob_revamp.items;
 
 import net.daplow.mob_revamp.items.armor.PiglinArmorMaterial;
 import net.daplow.mob_revamp.items.armor.PiglinChestplateItem;
-import net.daplow.mob_revamp.items.custom.BambooFluteItem;
-import net.daplow.mob_revamp.items.custom.BatWingItem;
-import net.daplow.mob_revamp.items.custom.WingSuitItem;
-import net.daplow.mob_revamp.other.WingSuitElytraRecipe;
+import net.daplow.mob_revamp.items.custom.*;
+import net.daplow.mob_revamp.util.Recipes.GuardianStaffRecipe;
+import net.daplow.mob_revamp.util.Recipes.WingSuitElytraRecipe;
 import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
-import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.item.*;
 import net.minecraft.recipe.SpecialRecipeSerializer;
 import net.minecraft.util.Identifier;
@@ -57,14 +55,37 @@ public class ModItems {
             )
     );
 
+
+    // Guardian Mod
+    public static final Item GUARDIAN_EYE = new GuardianEyeItem(new FabricItemSettings().group(DAPLOW_MOB_REVAMP).maxCount(1));
+    public static final Item GUARDIAN_STAFF = new GuardianStaffItem(new FabricItemSettings().group(DAPLOW_MOB_REVAMP).maxCount(1).maxDamage(124));
+    public static final SpecialRecipeSerializer<GuardianStaffRecipe> GUARDIAN_STAFF_RECIPE =
+            Registry.register(
+                    Registry.RECIPE_SERIALIZER,
+                    new Identifier(MOD_ID, "guardian_staff_recipe"),
+                    new SpecialRecipeSerializer<>(GuardianStaffRecipe::new)
+            );
+
+    // A Guardian Chestplate that gives thorns
+
+
+
     public static void registerItems() {
         Registry.register(Registry.ITEM, new Identifier(MOD_ID, "bat_wing"), BAT_WING);
 
         Registry.register(Registry.ITEM, new Identifier(MOD_ID, "parrot_feather"), PARROT_FEATHER);
         Registry.register(Registry.ITEM, new Identifier(MOD_ID, "bamboo_flute"), BAMBOO_FLUTE);
 
-        Registry.register(Registry.ITEM, new Identifier("daplow-mob_revamp", "squid_pearl"), SQUID_PEARL);
+        Registry.register(Registry.ITEM, new Identifier(MOD_ID, "squid_pearl"), SQUID_PEARL);
+
+        Registry.register(Registry.ITEM, new Identifier(MOD_ID, "guardian_eye"), GUARDIAN_EYE);
+        Registry.register(Registry.ITEM, new Identifier(MOD_ID, "guardian_staff"), GUARDIAN_STAFF);
+
 
 
     }
+
+
+
+
 }

@@ -11,6 +11,8 @@ import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 
+import static net.daplow.mob_revamp.items.ModItems.DAPLOW_MOB_REVAMP;
+
 public class ModBlocks {
 
     public static final Block FLOWERED_JUNGLE_LEAF = new LeavesBlock(
@@ -25,7 +27,7 @@ public class ModBlocks {
         Registry.register(Registry.BLOCK, new Identifier("daplow-mob_revamp", "flowered_jungle_leaf"), FLOWERED_JUNGLE_LEAF);
 
         Registry.register(Registry.ITEM, new Identifier("daplow-mob_revamp", "flowered_jungle_leaf"),
-                new BlockItem(FLOWERED_JUNGLE_LEAF, new Item.Settings().group(ItemGroup.DECORATIONS)));
+                new BlockItem(FLOWERED_JUNGLE_LEAF, new Item.Settings().group(ItemGroup.DECORATIONS).group(DAPLOW_MOB_REVAMP)));
     }
 
 }
