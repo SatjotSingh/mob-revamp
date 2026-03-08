@@ -40,14 +40,6 @@ public class ModLoot {
             Formatting.YELLOW,
             Formatting.GOLD
     };
-    private static final String[] GUARDIAN_COLOR_NAMES = {
-            "blue",
-            "red",
-            "green",
-            "dark_purple",
-            "yellow",
-            "gold"
-    };
 
     public static void registerLoot() {
         // Bat Mod
