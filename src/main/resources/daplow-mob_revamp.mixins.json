@@ -7,7 +7,9 @@
 		"PiglinBruteBrainMixin",
 		"PiglinBrainMixin",
       "SquidEntityMixin",
-		"GuardianStaffRendererMixin"
+		"GuardianStaffRendererMixin",
+
+		"LivingEntityMixin"
 	],
 	"injectors": {
 		"defaultRequire": 1

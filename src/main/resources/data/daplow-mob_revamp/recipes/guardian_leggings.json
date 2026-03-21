@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "SSS",
+    "S S",
+    "S S"
+  ],
+  "key": {
+    "S": {
+      "item": "daplow-mob_revamp:prismarine_ingot"
+    }
+  },
+
+
+  "result": {
+    "item": "daplow-mob_revamp:guardian_leggings",
+    "count": 1
+  }
+}

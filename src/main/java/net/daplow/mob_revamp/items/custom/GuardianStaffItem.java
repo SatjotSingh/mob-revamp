@@ -227,17 +227,18 @@ public class GuardianStaffItem extends Item {
                     //System.out.println("Lazer Shot!!");
 
                 }
-                world.playSound(
-                        null,
-                        user.getBlockPos(),
-                        SoundEvents.ENTITY_GUARDIAN_ATTACK,
-                        SoundCategory.PLAYERS,
-                        1.0f,
-                        1.0f
-                );
 
 
             }
+            world.playSound(
+                    null,
+                    user.getBlockPos(),
+                    SoundEvents.ENTITY_GUARDIAN_ATTACK,
+                    SoundCategory.PLAYERS,
+                    1.0f,
+                    1.0f
+            );
+
             int COOLDOWN = 20;
             if (!Objects.equals(nbt.getString("Eye_Variant"), "orange")) {
                 player.getItemCooldownManager().set(this, COOLDOWN);

@@ -1,5 +1,7 @@
 package net.daplow.mob_revamp.items;
 
+import net.daplow.mob_revamp.items.armor.GuardianArmorMaterial;
+import net.daplow.mob_revamp.items.armor.GuardianLeggingsItem;
 import net.daplow.mob_revamp.items.armor.PiglinArmorMaterial;
 import net.daplow.mob_revamp.items.armor.PiglinChestplateItem;
 import net.daplow.mob_revamp.items.custom.*;
@@ -66,7 +68,19 @@ public class ModItems {
                     new SpecialRecipeSerializer<>(GuardianStaffRecipe::new)
             );
 
+
     // A Guardian Chestplate that gives thorns
+    public static final ArmorMaterial GUARDIAN_ARMOR = new GuardianArmorMaterial();
+
+    public static final Item GUARDIAN_LEGGINGS = Registry.register(
+            Registry.ITEM,
+            new Identifier(MOD_ID, "guardian_leggings"),
+            new GuardianLeggingsItem(
+                    GUARDIAN_ARMOR,
+                    new FabricItemSettings().maxCount(1).group(DAPLOW_MOB_REVAMP)
+            )
+    );
+    public static final Item PRISMARINE_INGOT = new Item(new Item.Settings().group(DAPLOW_MOB_REVAMP));
 
 
 
@@ -80,6 +94,8 @@ public class ModItems {
 
         Registry.register(Registry.ITEM, new Identifier(MOD_ID, "guardian_eye"), GUARDIAN_EYE);
         Registry.register(Registry.ITEM, new Identifier(MOD_ID, "guardian_staff"), GUARDIAN_STAFF);
+        Registry.register(Registry.ITEM, new Identifier(MOD_ID, "prismarine_ingot"), PRISMARINE_INGOT);
+
 
 
 
