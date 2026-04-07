@@ -46,7 +46,7 @@ public class DaplowMain implements ModInitializer {
 
         ModCommands.register();
 
-        ModLoot.registerLoot();
+        ModLoot.register();
         ModEffects.register();
         ModPotions.register();
 

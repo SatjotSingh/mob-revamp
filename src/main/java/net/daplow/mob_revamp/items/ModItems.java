@@ -1,9 +1,6 @@
 package net.daplow.mob_revamp.items;
 
-import net.daplow.mob_revamp.items.armor.GuardianArmorMaterial;
-import net.daplow.mob_revamp.items.armor.GuardianLeggingsItem;
-import net.daplow.mob_revamp.items.armor.PiglinArmorMaterial;
-import net.daplow.mob_revamp.items.armor.PiglinChestplateItem;
+import net.daplow.mob_revamp.items.armor.*;
 import net.daplow.mob_revamp.items.custom.*;
 import net.daplow.mob_revamp.util.Recipes.GuardianStaffRecipe;
 import net.daplow.mob_revamp.util.Recipes.WingSuitElytraRecipe;
@@ -69,7 +66,6 @@ public class ModItems {
             );
 
 
-    // A Guardian Chestplate that gives thorns
     public static final ArmorMaterial GUARDIAN_ARMOR = new GuardianArmorMaterial();
 
     public static final Item GUARDIAN_LEGGINGS = Registry.register(
@@ -83,6 +79,22 @@ public class ModItems {
     public static final Item PRISMARINE_INGOT = new Item(new Item.Settings().group(DAPLOW_MOB_REVAMP));
 
 
+    // Wither Skeleton Mod
+    public static final Item WITHER_BONE = new Item(new Item.Settings().group(DAPLOW_MOB_REVAMP));
+    public static final Item WITHER_BONE_MEAL = new WitherBoneMealItem(new Item.Settings().group(DAPLOW_MOB_REVAMP));
+
+    // Wither Chestplate that makes you take no ranged damage
+    public static final ArmorMaterial WITHER_ARMOR = new WitherArmorMaterial();
+
+    public static final Item WITHER_CHESTPLATE = Registry.register(
+            Registry.ITEM,
+            new Identifier(MOD_ID, "wither_chestplate"),
+            new WitherChestplateItem(
+                    WITHER_ARMOR,
+                    new FabricItemSettings().maxCount(1).group(DAPLOW_MOB_REVAMP)
+            )
+    );
+
 
     public static void registerItems() {
         Registry.register(Registry.ITEM, new Identifier(MOD_ID, "bat_wing"), BAT_WING);
@@ -95,6 +107,9 @@ public class ModItems {
         Registry.register(Registry.ITEM, new Identifier(MOD_ID, "guardian_eye"), GUARDIAN_EYE);
         Registry.register(Registry.ITEM, new Identifier(MOD_ID, "guardian_staff"), GUARDIAN_STAFF);
         Registry.register(Registry.ITEM, new Identifier(MOD_ID, "prismarine_ingot"), PRISMARINE_INGOT);
+
+        Registry.register(Registry.ITEM, new Identifier(MOD_ID, "wither_bone"), WITHER_BONE);
+        Registry.register(Registry.ITEM, new Identifier(MOD_ID, "wither_bone_meal"), WITHER_BONE_MEAL);
 
 
 

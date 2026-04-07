@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "end": "daplow-mob_revamp:block/wither_bone_block_top",
+    "side": "daplow-mob_revamp:block/wither_bone_block_side"
+  }
+}

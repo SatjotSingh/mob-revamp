@@ -2,6 +2,7 @@ package net.daplow.mob_revamp.util;
 
 import net.daplow.mob_revamp.items.ModItems;
 import net.fabricmc.fabric.api.loot.v2.LootTableEvents;
+import net.minecraft.item.Items;
 import net.minecraft.loot.function.SetNameLootFunction;
 import net.minecraft.loot.function.SetNbtLootFunction;
 import net.minecraft.loot.provider.number.ConstantLootNumberProvider;
@@ -41,7 +42,7 @@ public class ModLoot {
             Formatting.GOLD
     };
 
-    public static void registerLoot() {
+    public static void register() {
         // Bat Mod
         LootTableEvents.MODIFY.register((resourceManager, lootManager, id, tableBuilder, source) -> {
             if (id.equals(new Identifier("minecraft", "entities/bat"))) {
@@ -58,12 +59,11 @@ public class ModLoot {
         LootTableEvents.MODIFY.register((resourceManager, lootManager, id, tableBuilder, source) -> {
 
             if (id.equals(new Identifier("minecraft", "entities/parrot"))) {
-                LootPool.Builder poolBuilder = LootPool.builder()
+                tableBuilder.pool(LootPool.builder()
                         .with(ItemEntry.builder(ModItems.PARROT_FEATHER))
                         .conditionally(RandomChanceLootCondition.builder(1)) // % chance
-                        .rolls(UniformLootNumberProvider.create(1.0f, 2.0f));  // # items dropped
+                        .rolls(UniformLootNumberProvider.create(1.0f, 2.0f)));  // # items dropped
 
-                tableBuilder.pool(poolBuilder);
             }
         });
 
@@ -138,5 +138,36 @@ public class ModLoot {
                 tableBuilder.pool(poolBuilder);
             }
         });
+
+        // Wither Skeleton Mod
+        LootTableEvents.MODIFY.register((resourceManager, lootManager, id, tableBuilder, source) -> {
+
+            if (id.equals(new Identifier("minecraft", "entities/wither_skeleton"))) {
+                LootPool.Builder poolBuilder = LootPool.builder()
+                        .with(ItemEntry.builder(ModItems.WITHER_BONE))
+                        .conditionally(RandomChanceLootCondition.builder(1f)) // % chance
+                        .rolls(UniformLootNumberProvider.create(1.0f, 2.0f));  // # items dropped
+
+                tableBuilder.pool(poolBuilder);
+
+
+            }
+        });
+
+
+
+        LootTableEvents.MODIFY.register((resourceManager, lootManager, id, tableBuilder, source) -> {
+
+            if (id.equals(new Identifier("minecraft", "entities/wither"))) {
+                LootPool.Builder poolBuilder = LootPool.builder()
+                        .with(ItemEntry.builder(ModItems.WITHER_BONE))
+                        .conditionally(RandomChanceLootCondition.builder(1f)) // % chance
+                        .rolls(UniformLootNumberProvider.create(5.0f, 10.0f));  // # items dropped
+
+
+                tableBuilder.pool(poolBuilder);
+            }
+        });
+
     }
 }

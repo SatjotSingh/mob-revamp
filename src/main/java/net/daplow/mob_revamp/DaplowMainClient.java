@@ -1,28 +1,24 @@
 package net.daplow.mob_revamp;
 
-import com.mojang.blaze3d.systems.RenderSystem;
-import net.daplow.mob_revamp.blocks.ModBlocks;
+
 import net.daplow.mob_revamp.effects.ModEffects;
 import net.daplow.mob_revamp.items.ModItems;
+import net.daplow.mob_revamp.items.armor.WitherChestplateRenderer;
 import net.fabricmc.api.ClientModInitializer;
-import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
+import net.fabricmc.fabric.api.client.rendering.v1.ArmorRenderer;
 import net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.HudRenderCallback;
 import net.minecraft.client.MinecraftClient;
-import net.minecraft.client.color.world.BiomeColors;
 import net.minecraft.client.gui.DrawableHelper;
-import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.item.ModelPredicateProviderRegistry;
-import net.minecraft.client.render.GameRenderer;
+
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Items;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.nbt.NbtElement;
-import net.minecraft.potion.PotionUtil;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.math.MathHelper;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -130,6 +126,15 @@ public class DaplowMainClient implements ClientModInitializer {
 
 
         }, ModItems.GUARDIAN_STAFF);
+
+
+        // Wither Mod
+
+        ArmorRenderer.register(
+                new WitherChestplateRenderer(),
+                ModItems.WITHER_CHESTPLATE
+        );
+
     }
 
 

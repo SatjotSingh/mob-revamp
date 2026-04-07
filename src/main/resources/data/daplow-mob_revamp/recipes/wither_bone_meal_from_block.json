@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "daplow-mob_revamp:wither_bone_block"
+    }
+  ],
+
+  "result": {
+    "item": "daplow-mob_revamp:wither_bone_meal",
+    "count": 9
+  },
+  "show_notification": true
+}

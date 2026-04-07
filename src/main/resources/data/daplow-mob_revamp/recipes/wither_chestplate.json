@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "ABA",
+    "AAA",
+    "AAA"
+  ],
+  "key": {
+    "A": {
+      "item": "daplow-mob_revamp:wither_bone"
+    },
+    "B": {
+      "item": "minecraft:nether_star"
+    }
+  },
+
+
+  "result": {
+    "item": "daplow-mob_revamp:wither_chestplate",
+    "count": 1
+  }
+}

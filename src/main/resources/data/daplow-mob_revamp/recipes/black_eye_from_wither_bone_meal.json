@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "daplow-mob_revamp:wither_bone_meal"
+    }
+  ],
+
+  "result": {
+    "item": "minecraft:black_dye",
+    "count": 1
+  },
+  "show_notification": true
+}
