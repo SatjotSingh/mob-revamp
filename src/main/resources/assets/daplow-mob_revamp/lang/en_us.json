@@ -37,5 +37,8 @@
   "item.daplow-mob_revamp.wither_bone": "Wither Bone",
   "item.daplow-mob_revamp.wither_bone_meal": "Wither Bone Meal",
   "block.daplow-mob_revamp.wither_bone_block" : "Wither Bone Block",
-  "item.daplow-mob_revamp.wither_chestplate": "Wither Chestplate"
+  "item.daplow-mob_revamp.wither_chestplate": "Wither Chestplate",
+
+  "item.daplow-mob_revamp.lucky_foot" : "Lucky Foot"
+
 }

@@ -1,5 +1,6 @@
 package net.daplow.mob_revamp.items;
 
+import net.daplow.mob_revamp.effects.ModPotions;
 import net.daplow.mob_revamp.items.armor.*;
 import net.daplow.mob_revamp.items.custom.*;
 import net.daplow.mob_revamp.util.Recipes.GuardianStaffRecipe;
@@ -7,6 +8,7 @@ import net.daplow.mob_revamp.util.Recipes.WingSuitElytraRecipe;
 import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.minecraft.item.*;
+import net.minecraft.potion.PotionUtil;
 import net.minecraft.recipe.SpecialRecipeSerializer;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
@@ -16,8 +18,8 @@ import static net.daplow.mob_revamp.DaplowMain.MOD_ID;
 public class ModItems {
 
     public static final ItemGroup DAPLOW_MOB_REVAMP = FabricItemGroupBuilder.create(
-                    new Identifier("daplow-mob_revamp", "daplow_mob_revamp_tab"))
-            .icon(() -> new ItemStack(ModItems.SQUID_PEARL)) // icon for the tab
+                    new Identifier(MOD_ID, "daplow_mob_revamp_tab"))
+            .icon(() -> new ItemStack(ModItems.PARROT_FEATHER)) // icon for the tab
             .build();
 
     // Bat Mod
@@ -79,7 +81,7 @@ public class ModItems {
     public static final Item PRISMARINE_INGOT = new Item(new Item.Settings().group(DAPLOW_MOB_REVAMP));
 
 
-    // Wither Skeleton Mod
+    // Wither Mod
     public static final Item WITHER_BONE = new Item(new Item.Settings().group(DAPLOW_MOB_REVAMP));
     public static final Item WITHER_BONE_MEAL = new WitherBoneMealItem(new Item.Settings().group(DAPLOW_MOB_REVAMP));
 
@@ -95,6 +97,8 @@ public class ModItems {
             )
     );
 
+    // Rabbit Mod
+    public static final Item LUCKY_CHARM = new LuckyCharmItem(new Item.Settings().group(DAPLOW_MOB_REVAMP));
 
     public static void registerItems() {
         Registry.register(Registry.ITEM, new Identifier(MOD_ID, "bat_wing"), BAT_WING);
@@ -111,6 +115,7 @@ public class ModItems {
         Registry.register(Registry.ITEM, new Identifier(MOD_ID, "wither_bone"), WITHER_BONE);
         Registry.register(Registry.ITEM, new Identifier(MOD_ID, "wither_bone_meal"), WITHER_BONE_MEAL);
 
+        Registry.register(Registry.ITEM, new Identifier(MOD_ID, "lucky_foot"), LUCKY_CHARM);
 
 
 

@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "AA",
+    "AB"
+  ],
+  "key": {
+    "B": {
+      "item": "minecraft:rabbit_foot"
+    },
+    "A": {
+      "item": "minecraft:string"
+    }
+  },
+  "result": {
+    "item": "daplow-mob_revamp:lucky_foot",
+    "count": 1
+  }
+}
