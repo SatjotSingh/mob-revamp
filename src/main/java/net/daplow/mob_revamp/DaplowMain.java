@@ -10,6 +10,7 @@ import net.daplow.mob_revamp.util.other.ParrotFeatherDrop;
 import net.daplow.mob_revamp.worldgen.ModFeatures;
 import net.daplow.mob_revamp.worldgen.ModStructures;
 import net.fabricmc.api.ModInitializer;
+import net.minecraft.item.Items;
 import net.minecraft.potion.Potions;
 import net.minecraft.recipe.BrewingRecipeRegistry;
 import org.slf4j.Logger;
@@ -29,20 +30,12 @@ public class DaplowMain implements ModInitializer {
         ModItems.registerItems();
         ModBlocks.registerBlocks();
 
-        //ModStructures.register();
-        //ModConfiguredFeatures.registerConfiguredFeatures();
-
-        //ModStructures.injectIntoBiomes();
-        //ModBiomes.register();
 
         ParrotFeatherDrop.register();
 
         ModFeatures.register();
-        //ModPlacedFeatures.register();
-
 
         ModStructures.register();
-        //ModStructurePieces.register();
 
         ModCommands.register();
 
@@ -50,17 +43,6 @@ public class DaplowMain implements ModInitializer {
         ModEffects.register();
         ModPotions.register();
 
-        BrewingRecipeRegistry.registerPotionRecipe(
-                Potions.AWKWARD,
-                ModItems.BAT_WING,
-                ModPotions.BAT_POTION
-        );
-
-        BrewingRecipeRegistry.registerPotionRecipe(
-                Potions.AWKWARD,
-                ModItems.SQUID_PEARL,
-                ModPotions.SQUID_POTION
-        );
 
 
     }

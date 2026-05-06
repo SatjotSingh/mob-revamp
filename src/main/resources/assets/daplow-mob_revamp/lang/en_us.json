@@ -9,6 +9,10 @@
   "item.minecraft.splash_potion.effect.bat_potion" : "Splash Potion of Hearing",
   "item.minecraft.tipped_arrow.effect.bat_potion" : "Arrow of Hearing",
   "item.minecraft.lingering_potion.effect.bat_potion" : "Lingering Potion of Hearing",
+  "item.minecraft.potion.effect.long_bat_potion" : "Potion of Hearing",
+  "item.minecraft.splash_potion.effect.long_bat_potion" : "Splash Potion of Hearing",
+  "item.minecraft.tipped_arrow.effect.long_bat_potion" : "Arrow of Hearing",
+  "item.minecraft.lingering_potion.effect.long_bat_potion" : "Lingering Potion of Hearing",
   "effect.daplow-mob_revamp.echolocation" : "Echo Location",
 
 
@@ -18,10 +22,14 @@
   "block.daplow-mob_revamp.flowered_jungle_leaf" : "Flowering Jungle Leaves",
 
 
-  "item.minecraft.potion.effect.squid_potion" : "Potion of Squid",
-  "item.minecraft.splash_potion.effect.squid_potion" : "Splash Potion of Squid",
-  "item.minecraft.tipped_arrow.effect.squid_potion" : "Arrow of Squid",
-  "item.minecraft.lingering_potion.effect.squid_potion" : "Lingering Potion of Squid",
+  "item.minecraft.potion.effect.squid_potion" : "Potion of the Squid",
+  "item.minecraft.splash_potion.effect.squid_potion" : "Splash Potion of the Squid",
+  "item.minecraft.tipped_arrow.effect.squid_potion" : "Arrow of the Squid",
+  "item.minecraft.lingering_potion.effect.squid_potion" : "Lingering Potion of the Squid",
+  "item.minecraft.potion.effect.glow_squid_potion" : "Potion of the Glow Squid",
+  "item.minecraft.splash_potion.effect.glow_squid_potion" : "Splash Potion of the Glow Squid",
+  "item.minecraft.tipped_arrow.effect.glow_squid_potion" : "Arrow of the Glow Squid",
+  "item.minecraft.lingering_potion.effect.glow_squid_potion" : "Lingering Potion of the Glow Squid",
   "effect.daplow-mob_revamp.inked" : "Ink Effect",
   "item.daplow-mob_revamp.squid_pearl": "Squid Pearl",
   "item.daplow-mob_revamp.deep_navy_blue": "Navy Blue Dye",
@@ -39,6 +47,14 @@
   "block.daplow-mob_revamp.wither_bone_block" : "Wither Bone Block",
   "item.daplow-mob_revamp.wither_chestplate": "Wither Chestplate",
 
-  "item.daplow-mob_revamp.lucky_foot" : "Lucky Foot"
-
+  "item.daplow-mob_revamp.lucky_foot" : "Lucky Foot",
+  "item.minecraft.potion.effect.rabbit_potion" : "Potion of Rabbit's Grace",
+  "item.minecraft.splash_potion.effect.rabbit_potion" : "Splash Potion of Rabbit's Grace",
+  "item.minecraft.tipped_arrow.effect.rabbit_potion" : "Arrow of Rabbit's Grace",
+  "item.minecraft.lingering_potion.effect.rabbit_potion" : "Lingering Potion of Rabbit's Grace",
+  "item.minecraft.potion.effect.long_rabbit_potion" : "Potion of Rabbit's Grace",
+  "item.minecraft.splash_potion.effect.long_rabbit_potion" : "Splash Potion of Rabbit's Grace",
+  "item.minecraft.tipped_arrow.effect.long_rabbit_potion" : "Arrow of Rabbit's Grace",
+  "item.minecraft.lingering_potion.effect.long_rabbit_potion" : "Lingering Potion of Rabbit's Grace",
+  "effect.daplow-mob_revamp.rabbit_grace" : "Rabbit's Grace"
 }

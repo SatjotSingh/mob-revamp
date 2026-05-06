@@ -74,7 +74,6 @@ public class DaplowMainClient implements ClientModInitializer {
 
         // Guardian Mod
         ColorProviderRegistry.ITEM.register((stack, tintIndex) -> {
-
                 if (tintIndex == 1) { // stem layer
                     if (!stack.hasNbt()) return 0xFFFFFF;
                     String stem = stack.getNbt().getString("Eye_Variant");
@@ -86,7 +85,6 @@ public class DaplowMainClient implements ClientModInitializer {
                     if ("yellow".equals(stem)) return 0xFFFF00;
                     if ("orange".equals(stem)) return 0xFFA500;
                     if ("purple".equals(stem)) return 0x800080;
-
                     return 0x000000;
                 }
                 return 0xFFFFFF;
@@ -94,12 +92,10 @@ public class DaplowMainClient implements ClientModInitializer {
 
 
         ColorProviderRegistry.ITEM.register((stack, tintIndex) -> {
-
             if (tintIndex == 1) { // stem layer
                 if (!stack.hasNbt()) return 0xFFFFFF;
                 Boolean golded = stack.getNbt().getBoolean("gold_variant");
                 if (golded) return 0xFFD700;
-
                 String stem = stack.getNbt().getString("Eye_Variant");
                 if ("gold".equals(stem)) return 0xFFD700;
                 if ("iron".equals(stem)) return 0xBEBEBE;
@@ -109,27 +105,13 @@ public class DaplowMainClient implements ClientModInitializer {
                 if ("yellow".equals(stem)) return 0xFFFF00;
                 if ("orange".equals(stem)) return 0xFFA500;
                 if ("purple".equals(stem)) return 0x800080;
-
                 return 0x000000;
             }
-            /*
-            if (tintIndex == 0) {
-                if (!stack.hasNbt()) return 0xFFFFFF;
-                Boolean golded = stack.getNbt().getBoolean("gold_variant");
-                if (golded) return 0xFFD700;
-
-
-            }
-            
-             */
-            return 0xFFFFFF; // base arrow
-
-
+            return 0xFFFFFF;
         }, ModItems.GUARDIAN_STAFF);
 
 
         // Wither Mod
-
         ArmorRenderer.register(
                 new WitherChestplateRenderer(),
                 ModItems.WITHER_CHESTPLATE

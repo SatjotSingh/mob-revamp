@@ -12,11 +12,10 @@ import net.minecraft.world.World;
 import java.util.List;
 
 
-public class
-EcholocationEffect extends StatusEffect {
+public class EcholocationEffect extends StatusEffect {
 
     public EcholocationEffect() {
-        super(StatusEffectCategory.BENEFICIAL, 0x3A2E5C);
+        super(StatusEffectCategory.NEUTRAL, 0x523111);
     }
 
     @Override
