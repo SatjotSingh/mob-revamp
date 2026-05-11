@@ -24,9 +24,9 @@ public class SquidEntityMixin {
             return;
         }
 
-        int squidType = 0;
+        int potion_amplifier = 0;
         if (squid instanceof GlowSquidEntity) {
-            squidType = 1;
+            potion_amplifier = 1;
         }
 
         // Get Nearby Players //
@@ -42,7 +42,7 @@ public class SquidEntityMixin {
             player.addStatusEffect(new StatusEffectInstance(
                     ModEffects.SQUID_POTION,
                     100, //ticks (seconds*20)
-                    squidType,
+                    potion_amplifier,
                     false,
                     false,
                     true
