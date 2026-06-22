@@ -56,5 +56,9 @@
   "item.minecraft.splash_potion.effect.long_rabbit_potion" : "Splash Potion of Rabbit's Grace",
   "item.minecraft.tipped_arrow.effect.long_rabbit_potion" : "Arrow of Rabbit's Grace",
   "item.minecraft.lingering_potion.effect.long_rabbit_potion" : "Lingering Potion of Rabbit's Grace",
-  "effect.daplow-mob_revamp.rabbit_grace" : "Rabbit's Grace"
+  "effect.daplow-mob_revamp.rabbit_grace" : "Rabbit's Grace",
+
+  "item.daplow-mob_revamp.warden_heart" : "Warden Heart",
+  "item.daplow-mob_revamp.warden_staff" : "Warden Staff"
+
 }

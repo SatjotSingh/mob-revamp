@@ -1,0 +1,57 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "daplow-mob_revamp:item/warden_heart_background",
+    "layer1": "daplow-mob_revamp:item/warden_heart_soul_0"
+  },
+
+  "overrides": [
+    {
+      "predicate": {
+        "pulse": 0.14
+      },
+      "model": "daplow-mob_revamp:item/warden_heart_0"
+    },
+    {
+      "predicate": {
+        "pulse": 0.28
+      },
+      "model": "daplow-mob_revamp:item/warden_heart_1"
+    },
+
+    {
+      "predicate": {
+        "pulse": 0.42
+      },
+      "model": "daplow-mob_revamp:item/warden_heart_2"
+    },
+
+    {
+      "predicate": {
+        "pulse": 0.56
+      },
+      "model": "daplow-mob_revamp:item/warden_heart_3"
+    },
+
+    {
+      "predicate": {
+        "pulse": 0.70
+      },
+      "model": "daplow-mob_revamp:item/warden_heart_4"
+    },
+
+    {
+      "predicate": {
+        "pulse": 0.84
+      },
+      "model": "daplow-mob_revamp:item/warden_heart_5"
+    },
+
+    {
+      "predicate": {
+        "pulse": 0.92
+      },
+      "model": "daplow-mob_revamp:item/warden_heart_6"
+    }
+  ]
+}

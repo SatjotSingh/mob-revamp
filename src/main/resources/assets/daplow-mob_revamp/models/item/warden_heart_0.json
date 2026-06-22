@@ -1,0 +1,8 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "daplow-mob_revamp:item/warden_heart_background",
+    "layer1": "daplow-mob_revamp:item/warden_heart_soul_0"
+
+  }
+}

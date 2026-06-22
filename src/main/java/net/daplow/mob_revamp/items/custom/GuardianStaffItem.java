@@ -1,5 +1,6 @@
 package net.daplow.mob_revamp.items.custom;
 
+import net.minecraft.client.render.entity.model.BipedEntityModel;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.Enchantments;
 import net.minecraft.entity.Entity;
@@ -69,6 +70,9 @@ public class GuardianStaffItem extends Item {
         return UseAction.NONE;
     }
 
+    /*
+
+    */
     @Override
     public int getMaxUseTime(ItemStack stack) {
         return 92000;

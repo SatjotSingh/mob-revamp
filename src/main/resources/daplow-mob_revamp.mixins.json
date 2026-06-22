@@ -7,7 +7,7 @@
 		"PiglinBruteBrainMixin",
 		"PiglinBrainMixin",
       "SquidEntityMixin",
-		"GuardianStaffRendererMixin",
+		"HeldItemRendererMixin",
 
 		"LivingEntityMixin"
 	],

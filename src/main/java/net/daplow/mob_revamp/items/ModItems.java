@@ -100,6 +100,12 @@ public class ModItems {
     // Rabbit Mod
     public static final Item LUCKY_CHARM = new LuckyCharmItem(new Item.Settings().group(DAPLOW_MOB_REVAMP));
 
+    // Warden Mod
+    public static final Item WARDEN_HEART = new Item(new Item.Settings().group(DAPLOW_MOB_REVAMP));
+    public static final Item WARDEN_STAFF = new WardenStaffItem(new Item.Settings().group(DAPLOW_MOB_REVAMP));
+
+
+
     public static void registerItems() {
         Registry.register(Registry.ITEM, new Identifier(MOD_ID, "bat_wing"), BAT_WING);
 
@@ -117,7 +123,8 @@ public class ModItems {
 
         Registry.register(Registry.ITEM, new Identifier(MOD_ID, "lucky_foot"), LUCKY_CHARM);
 
-
+        Registry.register(Registry.ITEM, new Identifier(MOD_ID, "warden_heart"), WARDEN_HEART);
+        Registry.register(Registry.ITEM, new Identifier(MOD_ID, "warden_staff"), WARDEN_STAFF);
 
     }
 

@@ -117,6 +117,26 @@ public class DaplowMainClient implements ClientModInitializer {
                 ModItems.WITHER_CHESTPLATE
         );
 
+
+        // Warden Mod
+        ModelPredicateProviderRegistry.register(
+                ModItems.WARDEN_HEART,
+                new Identifier("pulse"),
+                (stack, world, entity, seed) -> {
+
+                    if (entity == null)
+                        return 0;
+
+                    // Goes from 0 -> 1 repeatedly
+                    float num =  (entity.age % 30) / 10f;
+                    if (num >2) {
+                        num = 0;
+                    } else if (num >1) {
+                        num = 2-num;
+                    }
+                    return num;
+                }
+        );
     }
 
 

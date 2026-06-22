@@ -169,5 +169,18 @@ public class ModLoot {
             }
         });
 
+        // Warden Mod
+        LootTableEvents.MODIFY.register((resourceManager, lootManager, id, tableBuilder, source) -> {
+
+            if (id.equals(new Identifier("minecraft", "entities/warden"))) {
+                LootPool.Builder poolBuilder = LootPool.builder()
+                        .with(ItemEntry.builder(ModItems.WARDEN_HEART))
+                        .conditionally(RandomChanceLootCondition.builder(1f)) // % chance
+                        .rolls(ConstantLootNumberProvider.create(1));  // # items dropped
+
+                tableBuilder.pool(poolBuilder);
+            }
+        });
+
     }
 }
