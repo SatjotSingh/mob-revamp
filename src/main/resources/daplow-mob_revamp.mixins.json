@@ -9,7 +9,8 @@
       "SquidEntityMixin",
 		"HeldItemRendererMixin",
 
-		"LivingEntityMixin"
+		"LivingEntityMixin",
+		"WardenEntityMixin"
 	],
 	"injectors": {
 		"defaultRequire": 1

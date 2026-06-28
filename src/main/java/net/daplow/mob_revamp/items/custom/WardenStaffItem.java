@@ -48,58 +48,6 @@ public class WardenStaffItem extends Item {
     }
 
 
-
-    @Override
-    public void usageTick(World world, LivingEntity user, ItemStack stack, int remainingUseTicks) {
-        super.usageTick(world, user, stack, remainingUseTicks);
-
-        if (!world.isClient()) return;
-
-        int useTime = this.getMaxUseTime(stack) - remainingUseTicks;
-
-        // Not instant
-        if (useTime < 3) return;
-
-        Vec3d start = user.getEyePos();
-        Vec3d look = user.getRotationVec(1.0f);
-
-        Vec3d side = look.crossProduct(new Vec3d(0,1,0).normalize());
-        Vec3d up = look.crossProduct(side).normalize();
-
-        float radius = 0.15f;
-
-        int RANGE = 20;
-
-
-
-        for (double i = 2; i< (double) RANGE /2; i+=0.5) {
-            if(Math.random() < 0.1) {
-                Vec3d beamPos = start.add(look.multiply(i));
-
-                double angle = (useTime * 0.3) + i + 0.5;
-
-                double x = Math.cos(angle) * radius;
-                double y = Math.sin(angle) * radius;
-
-                Vec3d spiralOffset = side.multiply(x).add(up.multiply(y));
-                Vec3d particlePos = beamPos.add(spiralOffset);
-
-                world.addParticle(
-                        ParticleTypes.SCULK_SOUL,
-                        particlePos.x,
-                        particlePos.y,
-                        particlePos.z,
-                        0,
-                        0,
-                        0
-                );
-            }
-
-        }
-
-
-    }
-
     @Override
     public void onStoppedUsing(ItemStack stack, World world, LivingEntity user, int remainingUseTicks) {
         super.onStoppedUsing(stack, world, user, remainingUseTicks);
@@ -171,15 +119,27 @@ public class WardenStaffItem extends Item {
                     if (distance > 1.0) continue; // beam thickness
 
                     float DAMAGE = 15;
-                    if (entity.isTouchingWater()) {
+                    long time = world.getTime() % 24000;
+
+                    if (time >= 13000 && time < 23000){
                         DAMAGE *= 1.3F;
                     }
 
 
+                    Vec3d dir = entity.getPos().subtract(player.getPos()).normalize();
+
+                    entity.setVelocity(
+                            dir.x * 0.5,
+                            0.75,
+                            dir.z * 0.5
+                    );
+                    entity.velocityModified = true;
+
+
+                    // DAMAGE TURN ON
                     entity.damage(DamageSource.mob(user), DAMAGE);
 
 
-                    //System.out.println("Lazer Shot!!");
 
                 }
 
@@ -188,7 +148,7 @@ public class WardenStaffItem extends Item {
             world.playSound(
                     null,
                     user.getBlockPos(),
-                    SoundEvents.ENTITY_GUARDIAN_ATTACK,
+                    SoundEvents.ENTITY_WARDEN_ROAR,
                     SoundCategory.PLAYERS,
                     1.0f,
                     1.0f

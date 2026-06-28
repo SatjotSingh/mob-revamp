@@ -11,6 +11,7 @@ import net.minecraft.item.*;
 import net.minecraft.potion.PotionUtil;
 import net.minecraft.recipe.SpecialRecipeSerializer;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.Rarity;
 import net.minecraft.util.registry.Registry;
 
 import static net.daplow.mob_revamp.DaplowMain.MOD_ID;
@@ -93,16 +94,16 @@ public class ModItems {
             new Identifier(MOD_ID, "wither_chestplate"),
             new WitherChestplateItem(
                     WITHER_ARMOR,
-                    new FabricItemSettings().maxCount(1).group(DAPLOW_MOB_REVAMP)
+                    new FabricItemSettings().maxCount(1).group(DAPLOW_MOB_REVAMP).rarity(Rarity.UNCOMMON)
             )
     );
 
     // Rabbit Mod
-    public static final Item LUCKY_CHARM = new LuckyCharmItem(new Item.Settings().group(DAPLOW_MOB_REVAMP));
+    public static final Item LUCKY_CHARM = new LuckyCharmItem(new Item.Settings().group(DAPLOW_MOB_REVAMP).rarity(Rarity.RARE));
 
     // Warden Mod
-    public static final Item WARDEN_HEART = new Item(new Item.Settings().group(DAPLOW_MOB_REVAMP));
-    public static final Item WARDEN_STAFF = new WardenStaffItem(new Item.Settings().group(DAPLOW_MOB_REVAMP));
+    public static final Item WARDEN_HEART = new Item(new Item.Settings().group(DAPLOW_MOB_REVAMP).rarity(Rarity.EPIC));
+    public static final Item WARDEN_STAFF = new WardenStaffItem(new Item.Settings().group(DAPLOW_MOB_REVAMP).maxCount(1).maxDamage(128).rarity(Rarity.EPIC));
 
 
 

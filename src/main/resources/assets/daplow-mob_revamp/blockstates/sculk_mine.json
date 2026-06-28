@@ -1,0 +1,5 @@
+{
+  "variants": {
+    "": { "model": "daplow-mob_revamp:block/sculk_mine" }
+  }
+}

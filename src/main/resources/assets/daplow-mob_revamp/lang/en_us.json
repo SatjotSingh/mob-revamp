@@ -18,7 +18,7 @@
 
 
   "item.daplow-mob_revamp.parrot_feather": "Parrot Feather",
-  "item.daplow-mob_revamp.bamboo_flute": "Parrot Flute",
+  "item.daplow-mob_revamp.bamboo_flute": "Bamboo Flute",
   "block.daplow-mob_revamp.flowered_jungle_leaf" : "Flowering Jungle Leaves",
 
 
@@ -59,6 +59,6 @@
   "effect.daplow-mob_revamp.rabbit_grace" : "Rabbit's Grace",
 
   "item.daplow-mob_revamp.warden_heart" : "Warden Heart",
-  "item.daplow-mob_revamp.warden_staff" : "Warden Staff"
-
+  "item.daplow-mob_revamp.warden_staff" : "Warden Staff",
+  "block.daplow-mob_revamp.sculk_mine" : "Sculk Mine"
 }
