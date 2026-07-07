@@ -60,5 +60,22 @@
 
   "item.daplow-mob_revamp.warden_heart" : "Warden Heart",
   "item.daplow-mob_revamp.warden_staff" : "Warden Staff",
-  "block.daplow-mob_revamp.sculk_mine" : "Sculk Mine"
+  "block.daplow-mob_revamp.sculk_mine" : "Sculk Mine",
+
+  "item.daplow-mob_revamp.winter_fur" : "Winter Fur",
+  "item.daplow-mob_revamp.winter_boots" : "Winter Boots",
+  "item.minecraft.potion.effect.freezing_potion" : "Potion of Freezing",
+  "item.minecraft.splash_potion.effect.freezing_potion" : "Splash Potion of Freezing",
+  "item.minecraft.tipped_arrow.effect.freezing_potion" : "Arrow of Freezing",
+  "item.minecraft.lingering_potion.effect.freezing_potion" : "Lingering Potion of Freezing",
+  "effect.daplow-mob_revamp.freezing" : "Freezing",
+
+
+  "item.daplow-mob_revamp.endermite_scale" : "Endermite Scale",
+  "item.daplow-mob_revamp.ender_boots" : "Ender Boots",
+  "block.daplow-mob_revamp.warping_stone" : "Warping Stone",
+
+  "item.daplow-mob_revamp.pig_coin" : "Pig Coin",
+  "item.daplow-mob_revamp.piggy_bank" : "Piggy Bank"
+
 }

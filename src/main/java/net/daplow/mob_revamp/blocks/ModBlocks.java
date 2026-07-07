@@ -34,6 +34,8 @@ public class ModBlocks {
 
     public static final Block SCULK_MINE = new SculkMineBlock(AbstractBlock.Settings.copy(Blocks.SCULK).requiresTool());
 
+    public static final Block WARPING_STONE = new Block(AbstractBlock.Settings.copy(Blocks.END_STONE).requiresTool());
+
 
     public static void registerBlocks() {
 
@@ -42,6 +44,9 @@ public class ModBlocks {
         AddBlock("wither_bone_block", WITHER_BONE_BLOCK, new BlockItem(WITHER_BONE_BLOCK, new Item.Settings().group(DAPLOW_MOB_REVAMP)));
 
         AddBlock("sculk_mine", SCULK_MINE, new BlockItem(SCULK_MINE, new Item.Settings().group(DAPLOW_MOB_REVAMP)));
+        AddBlock("warping_stone", WARPING_STONE, new BlockItem(WARPING_STONE, new Item.Settings().group(DAPLOW_MOB_REVAMP)));
+
+
         //Registry.register(Registry.BLOCK, new Identifier(MOD_ID, "flowered_jungle_leaf"), FLOWERED_JUNGLE_LEAF);
 
         //Registry.register(Registry.ITEM, new Identifier(MOD_ID, "flowered_jungle_leaf"),

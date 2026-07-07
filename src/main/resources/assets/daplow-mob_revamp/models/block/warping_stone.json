@@ -1,0 +1,6 @@
+{
+  "parent": "block/cube_all",
+  "textures": {
+    "all": "daplow-mob_revamp:block/warping_stone"
+  }
+}

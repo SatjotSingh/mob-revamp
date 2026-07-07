@@ -90,6 +90,20 @@ public class ModPotions {
                     ))
             );
 
+    public static final Potion FREEZING_POTION =
+            Registry.register(
+                    Registry.POTION,
+                    new Identifier(MOD_ID, "freezing_potion"),
+                    new Potion(new StatusEffectInstance(
+                            ModEffects.FREEZING_POTION,
+                            20*30,
+                            0,
+                            false,
+                            true,
+                            true
+                    ))
+            );
+
 
     public static void register() {
 
@@ -133,6 +147,16 @@ public class ModPotions {
                 Items.REDSTONE,
                 ModPotions.LONG_RABBIT_POTION
         );
+
+
+        // FREEZING_POTION
+        BrewingRecipeRegistry.registerPotionRecipe(
+                Potions.AWKWARD,
+                ModItems.WINTER_FUR,
+                ModPotions.FREEZING_POTION
+        );
+
+
 
     }
 }

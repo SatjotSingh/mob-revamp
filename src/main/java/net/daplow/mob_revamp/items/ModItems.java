@@ -1,6 +1,5 @@
 package net.daplow.mob_revamp.items;
 
-import net.daplow.mob_revamp.effects.ModPotions;
 import net.daplow.mob_revamp.items.armor.*;
 import net.daplow.mob_revamp.items.custom.*;
 import net.daplow.mob_revamp.util.Recipes.GuardianStaffRecipe;
@@ -8,7 +7,6 @@ import net.daplow.mob_revamp.util.Recipes.WingSuitElytraRecipe;
 import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.minecraft.item.*;
-import net.minecraft.potion.PotionUtil;
 import net.minecraft.recipe.SpecialRecipeSerializer;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.Rarity;
@@ -105,10 +103,32 @@ public class ModItems {
     public static final Item WARDEN_HEART = new Item(new Item.Settings().group(DAPLOW_MOB_REVAMP).rarity(Rarity.EPIC));
     public static final Item WARDEN_STAFF = new WardenStaffItem(new Item.Settings().group(DAPLOW_MOB_REVAMP).maxCount(1).maxDamage(128).rarity(Rarity.EPIC));
 
+    // Polar Bear Mod
+    public static final Item WINTER_FUR = new Item(new Item.Settings().group(DAPLOW_MOB_REVAMP));
+    public static final Item WINTER_BOOTS = new Item(new Item.Settings().group(DAPLOW_MOB_REVAMP));
+
+
+    //Endermite Mod
+    public static final Item ENDERMITE_SCALE = new Item(new Item.Settings().group(DAPLOW_MOB_REVAMP));
+    public static final Item ENDER_BOOTS = new Item(new Item.Settings().group(DAPLOW_MOB_REVAMP));
+
+
+    //Pig Mod
+    public static final Item PIG_COIN = new Item(new Item.Settings().group(DAPLOW_MOB_REVAMP));
+    public static final Item PIGGY_BANK = new Item(new Item.Settings().group(DAPLOW_MOB_REVAMP));
 
 
     public static void registerItems() {
-        Registry.register(Registry.ITEM, new Identifier(MOD_ID, "bat_wing"), BAT_WING);
+        buildItem("winter_fur", WINTER_FUR);
+        buildItem("winter_boots", WINTER_BOOTS);
+        buildItem("endermite_scale", ENDERMITE_SCALE);
+        buildItem("ender_boots", ENDER_BOOTS);
+        buildItem("pig_coin", PIG_COIN);
+        buildItem("piggy_bank", PIGGY_BANK);
+
+        //Registry.register(Registry.ITEM, new Identifier(MOD_ID, "bat_wing"), BAT_WING);
+
+        buildItem("bat_wing", BAT_WING);
 
         Registry.register(Registry.ITEM, new Identifier(MOD_ID, "parrot_feather"), PARROT_FEATHER);
         Registry.register(Registry.ITEM, new Identifier(MOD_ID, "bamboo_flute"), BAMBOO_FLUTE);
@@ -130,6 +150,9 @@ public class ModItems {
     }
 
 
+    public static void buildItem(String name, Item item) {
+        Registry.register(Registry.ITEM, new Identifier(MOD_ID, name), item);
 
+    }
 
 }
