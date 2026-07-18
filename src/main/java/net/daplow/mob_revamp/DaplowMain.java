@@ -1,11 +1,13 @@
 package net.daplow.mob_revamp;
 
+import net.daplow.mob_revamp.blocks.ModBlockEntities;
 import net.daplow.mob_revamp.blocks.ModBlocks;
 import net.daplow.mob_revamp.commands.ModCommands;
 import net.daplow.mob_revamp.effects.ModEffects;
 import net.daplow.mob_revamp.effects.ModPotions;
 import net.daplow.mob_revamp.items.ModItems;
 import net.daplow.mob_revamp.util.ModLoot;
+import net.daplow.mob_revamp.util.Screen.ModScreenHandler;
 import net.daplow.mob_revamp.util.other.ParrotFeatherDrop;
 import net.daplow.mob_revamp.worldgen.ModFeatures;
 import net.daplow.mob_revamp.worldgen.ModStructures;
@@ -29,6 +31,7 @@ public class DaplowMain implements ModInitializer {
 
         ModItems.registerItems();
         ModBlocks.registerBlocks();
+        ModBlockEntities.register();
 
 
         ParrotFeatherDrop.register();
@@ -42,6 +45,8 @@ public class DaplowMain implements ModInitializer {
         ModLoot.register();
         ModEffects.register();
         ModPotions.register();
+
+        ModScreenHandler.register();
 
 
 

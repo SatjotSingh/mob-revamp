@@ -182,5 +182,43 @@ public class ModLoot {
             }
         });
 
+        // Polar Bear Mod
+        LootTableEvents.MODIFY.register((resourceManager, lootManager, id, tableBuilder, source) -> {
+
+            if (id.equals(new Identifier("minecraft", "entities/polar_bear"))) {
+                LootPool.Builder poolBuilder = LootPool.builder()
+                        .with(ItemEntry.builder(ModItems.WINTER_FUR))
+                        .conditionally(RandomChanceLootCondition.builder(1f)) // % chance
+                        .rolls(UniformLootNumberProvider.create(1.0f, 2.0f));  // # items dropped
+
+                tableBuilder.pool(poolBuilder);
+            }
+        });
+
+        // Pig Mod
+        LootTableEvents.MODIFY.register((resourceManager, lootManager, id, tableBuilder, source) -> {
+
+            if (id.equals(new Identifier("minecraft", "entities/pig"))) {
+                LootPool.Builder poolBuilder = LootPool.builder()
+                        .with(ItemEntry.builder(ModItems.PIG_COIN))
+                        .conditionally(RandomChanceLootCondition.builder(0.5f)) // % chance
+                        .rolls(ConstantLootNumberProvider.create(1));  // # items dropped
+
+                tableBuilder.pool(poolBuilder);
+            }
+        });
+
+        // Endermite Mod
+        LootTableEvents.MODIFY.register((resourceManager, lootManager, id, tableBuilder, source) -> {
+
+            if (id.equals(new Identifier("minecraft", "entities/endermite"))) {
+                LootPool.Builder poolBuilder = LootPool.builder()
+                        .with(ItemEntry.builder(ModItems.ENDERMITE_SCALE))
+                        .conditionally(RandomChanceLootCondition.builder(1f)) // % chance
+                        .rolls(ConstantLootNumberProvider.create(1));  // # items dropped
+
+                tableBuilder.pool(poolBuilder);
+            }
+        });
     }
 }

@@ -6,6 +6,7 @@ import net.daplow.mob_revamp.util.Recipes.GuardianStaffRecipe;
 import net.daplow.mob_revamp.util.Recipes.WingSuitElytraRecipe;
 import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
+import net.minecraft.block.PowderSnowBlock;
 import net.minecraft.item.*;
 import net.minecraft.recipe.SpecialRecipeSerializer;
 import net.minecraft.util.Identifier;
@@ -86,7 +87,6 @@ public class ModItems {
 
     // Wither Chestplate that makes you take no ranged damage
     public static final ArmorMaterial WITHER_ARMOR = new WitherArmorMaterial();
-
     public static final Item WITHER_CHESTPLATE = Registry.register(
             Registry.ITEM,
             new Identifier(MOD_ID, "wither_chestplate"),
@@ -105,26 +105,43 @@ public class ModItems {
 
     // Polar Bear Mod
     public static final Item WINTER_FUR = new Item(new Item.Settings().group(DAPLOW_MOB_REVAMP));
-    public static final Item WINTER_BOOTS = new Item(new Item.Settings().group(DAPLOW_MOB_REVAMP));
-
+    public static final ArmorMaterial WINTER_ARMOR = new WinterArmorMaterial();
+    public static final Item WINTER_BOOTS = Registry.register(
+            Registry.ITEM,
+            new Identifier(MOD_ID, "winter_boots"),
+            new WinterBootsItem(
+                    WINTER_ARMOR,
+                    new FabricItemSettings().maxCount(1).group(DAPLOW_MOB_REVAMP)
+            )
+    );
 
     //Endermite Mod
-    public static final Item ENDERMITE_SCALE = new Item(new Item.Settings().group(DAPLOW_MOB_REVAMP));
-    public static final Item ENDER_BOOTS = new Item(new Item.Settings().group(DAPLOW_MOB_REVAMP));
-
+    public static final Item ENDERMITE_SCALE = new EndermiteScaleItem(new Item.Settings().group(DAPLOW_MOB_REVAMP));
+    public static final ArmorMaterial ENDER_ARMOR = new EnderArmorMaterial();
+    public static final Item ENDER_BOOTS = Registry.register(
+            Registry.ITEM,
+            new Identifier(MOD_ID, "ender_boots"),
+            new EnderBootsItem(
+                    ENDER_ARMOR,
+                    new FabricItemSettings().maxCount(1).group(DAPLOW_MOB_REVAMP)
+            )
+    );
 
     //Pig Mod
     public static final Item PIG_COIN = new Item(new Item.Settings().group(DAPLOW_MOB_REVAMP));
-    public static final Item PIGGY_BANK = new Item(new Item.Settings().group(DAPLOW_MOB_REVAMP));
+    public static final Item PIGGY_BANK = new PiggyBankItem(new Item.Settings().group(DAPLOW_MOB_REVAMP).maxCount(1));
 
 
     public static void registerItems() {
-        buildItem("winter_fur", WINTER_FUR);
-        buildItem("winter_boots", WINTER_BOOTS);
-        buildItem("endermite_scale", ENDERMITE_SCALE);
-        buildItem("ender_boots", ENDER_BOOTS);
-        buildItem("pig_coin", PIG_COIN);
-        buildItem("piggy_bank", PIGGY_BANK);
+        buildItem("winter_fur", WINTER_FUR); //DONE
+        //Winter Boots  (DONE) (does: no slipperyness (boats work), powdered snow proof, 35% faster swim) (just need 3d texture)
+        buildItem("endermite_scale", ENDERMITE_SCALE);// (only got the drop working)
+        /// Endermite Boots  DONE  (does: no fall damage, 2 second slow falling infinitly) (just need 3d texture)
+        buildItem("pig_coin", PIG_COIN);  //DONE make it do something
+        buildItem("piggy_bank", PIGGY_BANK); //MOSTLY DONE (need to add colored variations) (Need Texture) (everything works)
+        /// Potion of Freazing // notdone
+        /// Warping Stone // MOSTLY DONE (need to add colored variations)
+
 
         //Registry.register(Registry.ITEM, new Identifier(MOD_ID, "bat_wing"), BAT_WING);
 

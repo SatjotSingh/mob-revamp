@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "ABA"
+  ],
+  "key": {
+    "A": {
+      "item": "daplow-mob_revamp:pig_coin"
+    },
+    "B" : {
+      "item": "minecraft:chest"
+    }
+  },
+
+
+  "result": {
+    "item": "daplow-mob_revamp:piggy_bank",
+    "count": 1
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "A A",
+    "A A"
+  ],
+  "key": {
+    "A": {
+      "item": "daplow-mob_revamp:endermite_scale"
+    }
+  },
+
+
+  "result": {
+    "item": "daplow-mob_revamp:ender_boots",
+    "count": 1
+  }
+}

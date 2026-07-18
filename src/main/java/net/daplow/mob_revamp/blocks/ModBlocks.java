@@ -1,6 +1,7 @@
 package net.daplow.mob_revamp.blocks;
 
 import net.daplow.mob_revamp.blocks.custom.SculkMineBlock;
+import net.daplow.mob_revamp.blocks.custom.WarpingStoneBlock;
 import net.daplow.mob_revamp.blocks.custom.WitherBoneBlock;
 import net.daplow.mob_revamp.items.ModItems;
 import net.minecraft.block.*;
@@ -34,7 +35,7 @@ public class ModBlocks {
 
     public static final Block SCULK_MINE = new SculkMineBlock(AbstractBlock.Settings.copy(Blocks.SCULK).requiresTool());
 
-    public static final Block WARPING_STONE = new Block(AbstractBlock.Settings.copy(Blocks.END_STONE).requiresTool());
+    public static final Block WARPING_STONE = new WarpingStoneBlock(AbstractBlock.Settings.copy(Blocks.END_STONE).requiresTool());
 
 
     public static void registerBlocks() {

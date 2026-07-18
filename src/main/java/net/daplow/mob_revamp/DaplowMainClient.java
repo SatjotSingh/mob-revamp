@@ -4,12 +4,15 @@ package net.daplow.mob_revamp;
 import net.daplow.mob_revamp.effects.ModEffects;
 import net.daplow.mob_revamp.items.ModItems;
 import net.daplow.mob_revamp.items.armor.WitherChestplateRenderer;
+import net.daplow.mob_revamp.util.Screen.ModScreenHandler;
+import net.daplow.mob_revamp.util.Screen.PiggyScreen;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.rendering.v1.ArmorRenderer;
 import net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.HudRenderCallback;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.DrawableHelper;
+import net.minecraft.client.gui.screen.ingame.HandledScreens;
 import net.minecraft.client.item.ModelPredicateProviderRegistry;
 
 import net.minecraft.client.util.math.MatrixStack;
@@ -137,6 +140,10 @@ public class DaplowMainClient implements ClientModInitializer {
                     return num;
                 }
         );
+
+        // Piggy Bank Item Screen
+        HandledScreens.register(ModScreenHandler.CUSTOM_PIGGY_SCREEN, PiggyScreen::new);
+
     }
 
 

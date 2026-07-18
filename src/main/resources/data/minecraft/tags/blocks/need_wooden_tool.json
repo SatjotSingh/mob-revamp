@@ -1,6 +1,8 @@
 {
   "replace": "false",
   "values": [
-    "daplow-mob_revamp:sculk_mine"
+    "daplow-mob_revamp:sculk_mine",
+    "daplow-mob_revamp:warping_stone"
+
   ]
 }

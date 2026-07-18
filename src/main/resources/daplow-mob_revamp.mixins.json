@@ -10,7 +10,8 @@
 		"HeldItemRendererMixin",
 
 		"LivingEntityMixin",
-		"WardenEntityMixin"
+		"WardenEntityMixin",
+		"PowderSnowBlockMixin"
 	],
 	"injectors": {
 		"defaultRequire": 1
