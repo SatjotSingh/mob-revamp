@@ -46,12 +46,7 @@ public class DaplowMain implements ModInitializer {
 
 
     }
-// master test
-//UPdate github
 
-
-// multi-update git
-
-    // warden update jab
+    // git advance-ai
 
 }
