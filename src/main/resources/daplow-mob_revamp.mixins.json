@@ -10,7 +10,10 @@
 		"HeldItemRendererMixin",
 
 		"LivingEntityMixin",
-		"WardenEntityMixin"
+
+		"WardenEntityMixin",
+		"WardenEntityModelMixin",
+		"WardenEntityModelInvoker"
 	],
 	"injectors": {
 		"defaultRequire": 1

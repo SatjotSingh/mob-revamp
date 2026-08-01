@@ -1,5 +1,7 @@
 package net.daplow.mob_revamp.mixin;
 
+import net.daplow.mob_revamp.util.other.SmashAnimationAccess;
+import net.minecraft.entity.AnimationState;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.mob.WardenEntity;
@@ -15,13 +17,16 @@ import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import java.util.List;
 
 @Mixin(WardenEntity.class)
-public abstract class WardenEntityMixin {
+public abstract class WardenEntityMixin implements SmashAnimationAccess {
 
-    private static int slamDuration = 200;
+    private static int slamCooldownDuration = 150;  //keep at 200
+
+    private static int slamDuration = 40;
 
     @Unique
     private int slamCooldown = 0;
@@ -30,7 +35,19 @@ public abstract class WardenEntityMixin {
     private int slamCharge = 0;
 
     @Unique
+    private final AnimationState smashAnimationState = new AnimationState();
+
+    @Unique
     private boolean chargingSlam = false;
+
+    @Unique
+    private static final byte SMASH_ANIMATION = 100;
+
+
+    @Override
+    public AnimationState getSmashAnimationState() {
+        return smashAnimationState;
+    }
 
     @Inject(method = "mobTick", at = @At("TAIL"))
     private void tickSlam(CallbackInfo ci) {
@@ -49,13 +66,21 @@ public abstract class WardenEntityMixin {
             return;
 
         // Start charging
+
         if (!chargingSlam &&
                 slamCooldown <= 0 &&
-                warden.distanceTo(target) <= 6) {
+                warden.distanceTo(target) <= 6
+)
+        {
 
             chargingSlam = true;
-            slamCharge = 20;
+            slamCharge = slamDuration;
 
+            warden.getNavigation().stop();
+        }
+
+        if (slamCharge == slamDuration-7) {
+            warden.getWorld().sendEntityStatus(warden, SMASH_ANIMATION);
         }
 
         if (chargingSlam) {
@@ -69,15 +94,28 @@ public abstract class WardenEntityMixin {
             if (slamCharge <= 0) {
 
                 chargingSlam = false;
-                slamCooldown = slamDuration; // 200
+                slamCooldown = slamCooldownDuration; // 200
                 performSlam(warden);
             }
         }
     }
 
 
+    @Inject(method = "handleStatus", at = @At("TAIL"))
+    private void handleSmashStatus(byte status, CallbackInfo ci) {
+
+        WardenEntity warden = (WardenEntity)(Object)this;
+
+        if (status == SMASH_ANIMATION) {
+            smashAnimationState.start(warden.age);
+        }
+    }
 
 
+    @Override
+    public boolean isChargingSmash() {
+        return chargingSlam;
+    }
 
 
     @Unique
@@ -150,5 +188,6 @@ public abstract class WardenEntityMixin {
 
 
     }
+
 }
 
