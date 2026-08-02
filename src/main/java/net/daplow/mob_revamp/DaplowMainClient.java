@@ -4,7 +4,11 @@ package net.daplow.mob_revamp;
 import net.daplow.mob_revamp.effects.ModEffects;
 import net.daplow.mob_revamp.items.ModItems;
 import net.daplow.mob_revamp.items.armor.WitherChestplateRenderer;
+import net.daplow.mob_revamp.util.ModPackets;
+import net.daplow.mob_revamp.util.other.ScreenShake;
 import net.fabricmc.api.ClientModInitializer;
+import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
+import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 import net.fabricmc.fabric.api.client.rendering.v1.ArmorRenderer;
 import net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.HudRenderCallback;
@@ -137,6 +141,24 @@ public class DaplowMainClient implements ClientModInitializer {
                     return num;
                 }
         );
+
+
+
+
+        ClientPlayNetworking.registerGlobalReceiver(
+                ModPackets.WARDEN_SLAM_SHAKE,
+                (client, handler, buf, responseSender) -> {
+
+                    client.execute(() -> {
+                        ScreenShake.start(12, 2.0F);
+                    });
+
+                });
+
+        ClientTickEvents.END_CLIENT_TICK.register(client -> {
+            ScreenShake.tick();
+        });
+
     }
 
 
@@ -213,5 +235,8 @@ public class DaplowMainClient implements ClientModInitializer {
 
         }
     }
+
+
+
 
 }

@@ -6,7 +6,7 @@
 		"ElytraFeatureRendererMixin",
 		"PiglinBruteBrainMixin",
 		"PiglinBrainMixin",
-      "SquidEntityMixin",
+        "SquidEntityMixin",
 		"HeldItemRendererMixin",
 
 		"LivingEntityMixin",
@@ -14,6 +14,10 @@
 		"WardenEntityMixin",
 		"WardenEntityModelMixin",
 		"WardenEntityModelInvoker"
+	],
+
+	"client" : [
+
 	],
 	"injectors": {
 		"defaultRequire": 1

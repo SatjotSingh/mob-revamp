@@ -1,11 +1,16 @@
 package net.daplow.mob_revamp.mixin;
 
+import net.daplow.mob_revamp.util.ModPackets;
 import net.daplow.mob_revamp.util.other.SmashAnimationAccess;
+import net.fabricmc.fabric.api.networking.v1.PacketByteBufs;
+import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 import net.minecraft.entity.AnimationState;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.mob.WardenEntity;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.particle.ParticleTypes;
+import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
@@ -17,7 +22,6 @@ import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
-import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import java.util.List;
 
@@ -70,16 +74,19 @@ public abstract class WardenEntityMixin implements SmashAnimationAccess {
         if (!chargingSlam &&
                 slamCooldown <= 0 &&
                 warden.distanceTo(target) <= 6
-)
+                && !warden.chargingSonicBoomAnimationState.isRunning()
+
+        )
         {
 
             chargingSlam = true;
             slamCharge = slamDuration;
 
             warden.getNavigation().stop();
+
         }
 
-        if (slamCharge == slamDuration-7) {
+        if (slamCharge == slamDuration-15) {
             warden.getWorld().sendEntityStatus(warden, SMASH_ANIMATION);
         }
 
@@ -185,6 +192,35 @@ public abstract class WardenEntityMixin implements SmashAnimationAccess {
 
             entity.velocityModified = true;
         }
+
+
+            for (ServerPlayerEntity player : server.getPlayers()) {
+
+                if (player.squaredDistanceTo(warden) < 20 * 20) {
+                    ServerPlayNetworking.send(
+                            player,
+                            ModPackets.WARDEN_SLAM_SHAKE,
+                            PacketByteBufs.empty()
+                    );
+                }
+            }
+
+        List<LivingEntity> far_entities =
+                world.getEntitiesByClass(
+                        LivingEntity.class,
+                        warden.getBoundingBox().expand(12),
+                        e -> e != warden
+                );
+
+        for (LivingEntity entity : far_entities) {
+            if (entity instanceof PlayerEntity player) {
+                float health = player.getHealth();
+
+                player.damage(DamageSource.mob(warden), 0.01F);
+                player.setHealth(health);
+            }
+        }
+
 
 
     }
