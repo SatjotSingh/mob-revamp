@@ -7,44 +7,16 @@ import net.minecraft.entity.effect.StatusEffectCategory;
 public class RabbitGraceEffect extends StatusEffect {
 
 
-    public RabbitGraceEffect () {super(StatusEffectCategory.BENEFICIAL, 0xFF0B6623);}
+    public RabbitGraceEffect() {super(StatusEffectCategory.BENEFICIAL, 0xFF0B6623); } // Light Green
 
 
     @Override
     public void applyUpdateEffect(LivingEntity entity, int amplifier) {
-        /*
-        if (!(entity instanceof PlayerEntity player)) return;
-
-        List<HostileEntity> nearbyMobs = player.getWorld().getEntitiesByClass(
-                HostileEntity.class,
-                player.getBoundingBox().expand(16),
-                mob -> true
-        );
-
-
-        for (HostileEntity mob : nearbyMobs) {
-            if (mob.getTarget() == player) {
-                mob.setTarget(null);
-
-                if (mob instanceof AbstractSkeletonEntity skeleton) {
-                    skeleton.setAttacking(false);
-                    skeleton.clearActiveItem();
-                }
-                if (mob instanceof CreeperEntity creeper) {
-                    creeper.setFuseSpeed(-1);
-                }
-
-            }
-        }
-
-         */
-
-
     }
 
     @Override
     public boolean canApplyUpdateEffect(int duration, int amplifier) {
-        return true;
+        return false;
     }
 
 

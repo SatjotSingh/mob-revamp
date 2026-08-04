@@ -19,7 +19,6 @@ public class ModEffects {
     public static void register() {
         Registry.register(Registry.STATUS_EFFECT, new Identifier(MOD_ID, "echolocation"), BAT_POTION);
 
-
         Registry.register(Registry.STATUS_EFFECT, new Identifier(MOD_ID, "inked"), SQUID_POTION);
 
         Registry.register(Registry.STATUS_EFFECT, new Identifier(MOD_ID, "rabbit_grace"), RABBIT_POTION);

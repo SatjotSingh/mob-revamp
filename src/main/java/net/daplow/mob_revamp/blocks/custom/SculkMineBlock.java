@@ -25,6 +25,7 @@ public class SculkMineBlock extends Block {
     }
 
 
+    // Gives Entity all effects for *sculk effect*
     private static void getSculked(Entity entity) {
 
         if (entity instanceof LivingEntity livingEntity) {
@@ -39,6 +40,7 @@ public class SculkMineBlock extends Block {
 
     }
 
+    // At pos given, it will play sculk mine at that location
     private static void activateSculkMine(World world, BlockPos pos) {
         // give nearby entities sculk effect
         for (PlayerEntity playerEntity : world.getEntitiesByClass(
@@ -48,9 +50,7 @@ public class SculkMineBlock extends Block {
             getSculked(playerEntity);
         }
 
-        //getSculked(player);
-
-        // player kaboom sound
+        // kaboom sound
         world.playSound(
                 null, // null = all nearby players hear it
                 pos,
@@ -75,7 +75,7 @@ public class SculkMineBlock extends Block {
             );
         }
 
-        // break block
+        // break sculk trap block
         world.breakBlock(pos, false);
 
     }
@@ -87,6 +87,7 @@ public class SculkMineBlock extends Block {
 
         if(world.isClient()) return;
 
+        // Spawns particles when stepping on sculk trap
         if (Math.random() < 0.4) {
             ((ServerWorld) world).spawnParticles(
                     ParticleTypes.SCULK_CHARGE_POP,
@@ -103,12 +104,12 @@ public class SculkMineBlock extends Block {
 
         if (Math.random() < 0.05) {
             world.playSound(
-                    null, // null = all nearby players hear it
+                    null,
                     pos,
                     SoundEvents.ENTITY_WARDEN_HEARTBEAT,
                     SoundCategory.BLOCKS,
-                    0.1F, // volume
-                    1.0F  // pitch
+                    0.1F,
+                    1.0F
             );
 
         }
@@ -135,7 +136,7 @@ public class SculkMineBlock extends Block {
         boolean powered = world.isReceivingRedstonePower(pos);
 
         if (powered) {
-            // Redstone turned on
+            // Allows Redstone to Work
             activateSculkMine(world, pos);
         }
     }

@@ -2,7 +2,6 @@ package net.daplow.mob_revamp.util;
 
 import net.daplow.mob_revamp.items.ModItems;
 import net.fabricmc.fabric.api.loot.v2.LootTableEvents;
-import net.minecraft.item.Items;
 import net.minecraft.loot.function.SetNameLootFunction;
 import net.minecraft.loot.function.SetNbtLootFunction;
 import net.minecraft.loot.provider.number.ConstantLootNumberProvider;

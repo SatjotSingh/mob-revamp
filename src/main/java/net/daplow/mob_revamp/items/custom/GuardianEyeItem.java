@@ -10,8 +10,6 @@ import net.minecraft.util.Formatting;
 import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.world.World;
 
-import java.text.Normalizer;
-
 public class GuardianEyeItem extends Item {
 
 

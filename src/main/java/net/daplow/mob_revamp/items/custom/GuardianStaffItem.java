@@ -1,14 +1,9 @@
 package net.daplow.mob_revamp.items.custom;
 
-import net.minecraft.client.render.entity.model.BipedEntityModel;
-import net.minecraft.enchantment.Enchantment;
-import net.minecraft.enchantment.Enchantments;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.damage.DamageSource;
-import net.minecraft.entity.damage.ProjectileDamageSource;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.entity.projectile.ProjectileUtil;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
@@ -23,8 +18,6 @@ import net.minecraft.util.Hand;
 import net.minecraft.util.TypedActionResult;
 import net.minecraft.util.UseAction;
 import net.minecraft.util.collection.DefaultedList;
-import net.minecraft.util.hit.EntityHitResult;
-import net.minecraft.util.hit.HitResult;
 import net.minecraft.util.math.Box;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
@@ -38,7 +31,6 @@ public class GuardianStaffItem extends Item {
         super(settings);
     }
 
-
     @Override
     public void appendStacks(ItemGroup group, DefaultedList<ItemStack> stacks) {
         if (this.isIn(group)) {
@@ -49,10 +41,9 @@ public class GuardianStaffItem extends Item {
             stacks.add(createStaff("purple", "Ranged Purple Guardian Staff", Formatting.DARK_PURPLE));   // 50% more distance
             stacks.add(createStaff("yellow", "Speedy Yellow Guardian Staff", Formatting.YELLOW));   // Less Cooldown
             stacks.add(createStaff("orange", "Fast Orange Guardian Staff", Formatting.GOLD));   // No wait Cooldown
-
-
         }
     }
+
     private ItemStack createStaff(String variant, String name, Formatting color) {
         ItemStack stack = new ItemStack(this);
         NbtCompound nbt = stack.getOrCreateNbt();
@@ -70,9 +61,6 @@ public class GuardianStaffItem extends Item {
         return UseAction.NONE;
     }
 
-    /*
-
-    */
     @Override
     public int getMaxUseTime(ItemStack stack) {
         return 92000;
@@ -176,7 +164,6 @@ public class GuardianStaffItem extends Item {
                     box,
                     entity -> entity instanceof LivingEntity && entity.isAlive()
             );
-            //System.out.println("Right Clicked on Guardian Staff");
 
             for (int i = 0; i < RANGE; i++) {
 

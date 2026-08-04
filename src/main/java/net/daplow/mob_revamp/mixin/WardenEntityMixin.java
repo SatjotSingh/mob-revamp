@@ -119,12 +119,6 @@ public abstract class WardenEntityMixin implements SmashAnimationAccess {
     }
 
 
-    @Override
-    public boolean isChargingSmash() {
-        return chargingSlam;
-    }
-
-
     @Unique
     private void performSlam(WardenEntity warden) {
 

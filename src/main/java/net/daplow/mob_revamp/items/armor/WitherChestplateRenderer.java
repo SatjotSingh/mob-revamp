@@ -102,23 +102,15 @@ public class WitherChestplateRenderer implements ArmorRenderer {
         matrix.push();
 
         boolean isChild = livingEntity.isBaby();
-        boolean isArmorStand = livingEntity instanceof ArmorStandEntity;
 
         float f = livingEntity.age;
 
         float scale = 0.5f;
 
+
         if (livingEntity instanceof ArmorStandEntity) {
 
-            VertexConsumer glint_layer = ItemRenderer.getArmorGlintConsumer(
-                    vertexConsumerProvider,
-                    RenderLayer.getArmorCutoutNoCull(WITHER_TEXTURE),
-                    false,
-                    itemStack.hasGlint()
-            );
-
-
-            // Glow layer
+            // --- ARMOR STAND GLOW LAYER --- //
             VertexConsumer glow_layer_1 = ItemRenderer.getDirectItemGlintConsumer(
                     vertexConsumerProvider,
                     RenderLayer.getEnergySwirl(
@@ -143,7 +135,6 @@ public class WitherChestplateRenderer implements ArmorRenderer {
             matrix.push();
             matrix.translate(0, 0.5, 0);
 
-
             armorStandBody.render(matrix, glow_layer_1, light, OverlayTexture.DEFAULT_UV, 0.4f, 0.4f, 0.4f, 1f);
             armorStandLeftArm.render(matrix, glow_layer_1, light, OverlayTexture.DEFAULT_UV, 0.4f, 0.4f, 0.4f, 1f);
             armorStandRightArm.render(matrix, glow_layer_1, light, OverlayTexture.DEFAULT_UV, 0.4f, 0.4f, 0.4f, 1f);
@@ -152,12 +143,10 @@ public class WitherChestplateRenderer implements ArmorRenderer {
             armorStandLeftArm.render(matrix, glow_layer_2, light, OverlayTexture.DEFAULT_UV, 0.4f, 0.4f, 0.4f, 1f);
             armorStandRightArm.render(matrix, glow_layer_2, light, OverlayTexture.DEFAULT_UV, 0.4f, 0.4f, 0.4f, 1f);
 
-            //armorStandBody.render(matrix, glint_layer, light, OverlayTexture.DEFAULT_UV);
-            //armorStandLeftArm.render(matrix, glint_layer, light, OverlayTexture.DEFAULT_UV);
-            //armorStandRightArm.render(matrix, glint_layer, light, OverlayTexture.DEFAULT_UV);
-
             matrix.pop();
 
+
+            // --- ARMOR STAND FRONT LAYER --- //
             VertexConsumer front_layer = ItemRenderer.getDirectItemGlintConsumer(
                     vertexConsumerProvider,
                     RenderLayer.getEnergySwirl(ARMOR_STAND_FRONT_TEXTURE, 0, 0), true, false
@@ -167,6 +156,7 @@ public class WitherChestplateRenderer implements ArmorRenderer {
             matrix.translate(0.0F, 0.52F, 0.0F);
             float pulse = 1.15f + 0.025f * (float)Math.sin(f * 0.2f);
             matrix.scale(pulse, pulse, pulse);
+
             armorStandBody.render(
                     matrix,
                     front_layer,
@@ -174,9 +164,11 @@ public class WitherChestplateRenderer implements ArmorRenderer {
                     OverlayTexture.DEFAULT_UV,
                     0.8f, 0.8f, 0.8f, 0.8f // alpha controls intensity
             );
+
             matrix.pop();
 
 
+            // --- ARMOR STAND WHITE TRANSLUSENT LAYER --- //
             VertexConsumer white_layer = ItemRenderer.getDirectItemGlintConsumer(
                     vertexConsumerProvider,
                     RenderLayer.getEnergySwirl(
@@ -188,9 +180,6 @@ public class WitherChestplateRenderer implements ArmorRenderer {
                     itemStack.hasGlint()
             );
 
-
-
-
             matrix.push();
             matrix.translate(0.0F, 0.52F, 0.0F);
             armorStandBody.render(matrix, white_layer, light, OverlayTexture.DEFAULT_UV, 0.05f, 0.05f, 0.05f, 1f);
@@ -199,31 +188,16 @@ public class WitherChestplateRenderer implements ArmorRenderer {
 
             matrix.pop();
 
-
-
-
             matrix.pop();
             return;
         }
 
         matrix.push();
         matrix.scale(1.2f, 1.2f, 1.2f);
-        // Render chest and arms
-        //contextModel.body.render(matrix, base, light, OverlayTexture.DEFAULT_UV);
-
-
         matrix.pop();
 
 
-
-        VertexConsumer glint_layer = ItemRenderer.getArmorGlintConsumer(
-                vertexConsumerProvider,
-                RenderLayer.getArmorCutoutNoCull(WITHER_TEXTURE),
-                false,
-                itemStack.hasGlint()
-        );
-
-
+        // --- PLAYER GLOW LAYER --- //
         VertexConsumer glow_layer_1 = ItemRenderer.getDirectItemGlintConsumer(
                 vertexConsumerProvider,
                 RenderLayer.getEnergySwirl(
@@ -235,9 +209,6 @@ public class WitherChestplateRenderer implements ArmorRenderer {
                 itemStack.hasGlint()
         );
 
-
-
-
         matrix.push();
         if (isChild) {
             matrix.scale(scale, scale, scale);
@@ -245,10 +216,6 @@ public class WitherChestplateRenderer implements ArmorRenderer {
         } else {
             matrix.scale(1.1f, 1.1f, 1.1f);
         }
-
-        // Render again with darker tint (like Wither)
-
-
 
         matrix.scale(1.1f, 1f, 1.1f);
         matrix.translate(-0.05*scale, 0, 0);  // more negative mean more inward.
@@ -258,14 +225,6 @@ public class WitherChestplateRenderer implements ArmorRenderer {
         contextModel.rightArm.render(matrix, glow_layer_1, light, OverlayTexture.DEFAULT_UV, 0.5f, 0.5f, 0.5f, 1f);
 
         matrix.pop();
-
-
-
-
-
-
-
-
 
         VertexConsumer glow_layer_2 = ItemRenderer.getDirectItemGlintConsumer(
                 vertexConsumerProvider,
@@ -278,7 +237,6 @@ public class WitherChestplateRenderer implements ArmorRenderer {
                 false
         );
 
-
         matrix.push();
         if (isChild) {
             matrix.scale(scale, scale, scale);
@@ -286,16 +244,14 @@ public class WitherChestplateRenderer implements ArmorRenderer {
         } else {
             matrix.scale(1.1f, 1.1f, 1.1f);
         }
-        //matrix.translate(0, -1, 0);
 
         matrix.scale(1.2f, 0.9f, 1.2f);
         contextModel.body.render(matrix, glow_layer_1, light, OverlayTexture.DEFAULT_UV, 0.5f, 0.5f, 0.5f, 1f);
-
         contextModel.body.render(matrix, glow_layer_2, light, OverlayTexture.DEFAULT_UV, 0.5f, 0.5f, 0.5f, 1f);
-
 
         matrix.pop();
 
+        // --- PLAYER RENDER AGAIN WITH DARKER TINT (like Wither) --- //
         matrix.push();
         if (isChild) {
             matrix.scale(scale, scale, scale);
@@ -303,9 +259,6 @@ public class WitherChestplateRenderer implements ArmorRenderer {
         } else {
             matrix.scale(1.1f, 1.1f, 1.1f);
         }
-
-        // Render again with darker tint (like Wither)
-
 
         matrix.scale(1.1f, 1f, 1.1f);
         matrix.translate(-0.05*scale, 0, 0);  // more negative mean more inward.
@@ -314,14 +267,14 @@ public class WitherChestplateRenderer implements ArmorRenderer {
         matrix.translate(0.1*scale, 0, 0);
         contextModel.rightArm.render(matrix, glow_layer_2, light, OverlayTexture.DEFAULT_UV, 0.5f, 0.5f, 0.5f, 1f);
 
-
-
         matrix.pop();
 
+        // --- PLAYER FRONT LAYER --- //
         VertexConsumer front_layer = ItemRenderer.getDirectItemGlintConsumer(
                 vertexConsumerProvider,
                 RenderLayer.getEnergySwirl(FRONT_TEXTURE, 0, 0), false, itemStack.hasGlint()
         );
+
         matrix.push();
         if (isChild) {
             matrix.scale(scale, scale, scale);
@@ -329,9 +282,11 @@ public class WitherChestplateRenderer implements ArmorRenderer {
         } else {
             matrix.scale(1.1f, 1.1f, 1.1f);
         }
+
         matrix.translate(0.0F, 0.0F, -0.02F);
         float pulse = 1.15f + 0.025f * (float)Math.sin(f * 0.2f);
         matrix.scale(pulse, pulse, pulse);
+
         contextModel.body.render(
                 matrix,
                 front_layer,
@@ -339,9 +294,11 @@ public class WitherChestplateRenderer implements ArmorRenderer {
                 OverlayTexture.DEFAULT_UV,
                 1f, 1f, 1f, 0.8f // alpha controls intensity
         );
+
         matrix.pop();
 
 
+        // --- PLAYER WHITE TRANSLUSENT LAYER --- //
         VertexConsumer white_layer = ItemRenderer.getDirectItemGlintConsumer(
                 vertexConsumerProvider,
                 RenderLayer.getEnergySwirl(
@@ -352,9 +309,6 @@ public class WitherChestplateRenderer implements ArmorRenderer {
                 false,
                 itemStack.hasGlint()
         );
-
-
-
 
         matrix.push();
         if (isChild) {
@@ -374,6 +328,7 @@ public class WitherChestplateRenderer implements ArmorRenderer {
 
 
 
+        // Render again with darker tint (like Wither)
         matrix.push();
         if (isChild) {
             matrix.scale(scale, scale, scale);
@@ -382,17 +337,13 @@ public class WitherChestplateRenderer implements ArmorRenderer {
             matrix.scale(1.1f, 1.1f, 1.1f);
         }
 
-        // Render again with darker tint (like Wither)
-
         matrix.scale(1.2f, 0.9f, 1.2f);
         contextModel.body.render(matrix, white_layer, light, OverlayTexture.DEFAULT_UV, 0.2f, 0.2f, 0.2f, 1f);
         matrix.pop();
-
 
         matrix.pop();
 
 
     }
-
 
 }

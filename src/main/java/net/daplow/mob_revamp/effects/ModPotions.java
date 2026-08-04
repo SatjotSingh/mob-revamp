@@ -94,13 +94,12 @@ public class ModPotions {
     public static void register() {
 
         // BAT_POTION
-        BrewingRecipeRegistry.registerPotionRecipe(
+        BrewingRecipeRegistry.registerPotionRecipe(  // Bat 1
                 Potions.AWKWARD,
                 ModItems.BAT_WING,
                 ModPotions.BAT_POTION
         );
-
-        BrewingRecipeRegistry.registerPotionRecipe(
+        BrewingRecipeRegistry.registerPotionRecipe(  // Bat 1 extended
                 ModPotions.BAT_POTION,
                 Items.REDSTONE,
                 ModPotions.LONG_BAT_POTION
@@ -108,13 +107,12 @@ public class ModPotions {
 
 
         // SQUID_POTION
-        BrewingRecipeRegistry.registerPotionRecipe(
+        BrewingRecipeRegistry.registerPotionRecipe( // Squid 1
                 Potions.AWKWARD,
                 ModItems.SQUID_PEARL,
                 ModPotions.SQUID_POTION
         );
-
-        BrewingRecipeRegistry.registerPotionRecipe(
+        BrewingRecipeRegistry.registerPotionRecipe( // Squid 2
                 ModPotions.SQUID_POTION,
                 Items.GLOW_INK_SAC,
                 ModPotions.GLOW_SQUID_POTION
@@ -122,13 +120,12 @@ public class ModPotions {
 
 
         // RABBIT_POTION
-        BrewingRecipeRegistry.registerPotionRecipe(
+        BrewingRecipeRegistry.registerPotionRecipe( // Rabbit 1
                 Potions.AWKWARD,
                 ModItems.LUCKY_CHARM,
                 ModPotions.RABBIT_POTION
         );
-
-        BrewingRecipeRegistry.registerPotionRecipe(
+        BrewingRecipeRegistry.registerPotionRecipe(  // Rabbit 1 extended
                 ModPotions.RABBIT_POTION,
                 Items.REDSTONE,
                 ModPotions.LONG_RABBIT_POTION

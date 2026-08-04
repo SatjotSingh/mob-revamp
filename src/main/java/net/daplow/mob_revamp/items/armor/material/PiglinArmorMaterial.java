@@ -1,6 +1,5 @@
-package net.daplow.mob_revamp.items.armor;
+package net.daplow.mob_revamp.items.armor.material;
 
-import net.daplow.mob_revamp.items.ModItems;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.item.ArmorMaterial;
 import net.minecraft.item.ArmorMaterials;
@@ -9,22 +8,22 @@ import net.minecraft.recipe.Ingredient;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
 
-public class WitherArmorMaterial implements ArmorMaterial {
+public class PiglinArmorMaterial implements ArmorMaterial {
 
     @Override
     public int getDurability(EquipmentSlot slot) {
-        return ArmorMaterials.IRON.getDurability(slot);
+        return ArmorMaterials.GOLD.getDurability(slot);
     }
 
     @Override
     public int getProtectionAmount(EquipmentSlot slot) {
-        return ArmorMaterials.DIAMOND.getProtectionAmount(slot);
+        return ArmorMaterials.GOLD.getProtectionAmount(slot);
     }
 
 
     @Override
     public int getEnchantability() {
-        return ArmorMaterials.DIAMOND.getEnchantability();
+        return ArmorMaterials.GOLD.getEnchantability();
     }
 
     @Override
@@ -34,12 +33,12 @@ public class WitherArmorMaterial implements ArmorMaterial {
 
     @Override
     public Ingredient getRepairIngredient() {
-        return Ingredient.ofItems(ModItems.WITHER_BONE);
+        return Ingredient.ofItems(Items.GOLD_BLOCK);
     }
 
     @Override
     public String getName() {
-        return "daplow-mob_revamp:wither";
+        return "daplow-mob_revamp:piglin";
     }
 
     @Override

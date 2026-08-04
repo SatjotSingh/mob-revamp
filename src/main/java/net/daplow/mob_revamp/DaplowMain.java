@@ -10,9 +10,6 @@ import net.daplow.mob_revamp.util.other.ParrotFeatherDrop;
 import net.daplow.mob_revamp.worldgen.ModFeatures;
 import net.daplow.mob_revamp.worldgen.ModStructures;
 import net.fabricmc.api.ModInitializer;
-import net.minecraft.item.Items;
-import net.minecraft.potion.Potions;
-import net.minecraft.recipe.BrewingRecipeRegistry;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -21,15 +18,13 @@ public class DaplowMain implements ModInitializer {
 
     public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
 
-
-    // commit
     @Override
     public void onInitialize() {
-        LOGGER.info("WAKE UP DAPLOW!!!");
+        LOGGER.info("[Mob Revamp] WAKE UP DAPLOW!!!");
 
         ModItems.registerItems();
-        ModBlocks.registerBlocks();
 
+        ModBlocks.registerBlocks();
 
         ParrotFeatherDrop.register();
 
@@ -46,12 +41,4 @@ public class DaplowMain implements ModInitializer {
 
 
     }
-// master test
-//UPdate github
-
-
-// multi-update git
-
-    // warden update jab
-
 }

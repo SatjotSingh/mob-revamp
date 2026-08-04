@@ -33,13 +33,10 @@ public class FlowerTreeCommand {
                                                                 ChunkGenerator chunkGenerator = world.getChunkManager().getChunkGenerator();
                                                                 DefaultFeatureConfig config = DefaultFeatureConfig.DEFAULT;
 
-                                                                // Use Mojang Random
                                                                 Random random = Random.create();
 
-                                                                // Optional ConfiguredFeature (empty since we use raw Feature)
                                                                 Optional<ConfiguredFeature<?, ?>> featureOpt = Optional.empty();
 
-                                                                // FeatureContext
                                                                 FeatureContext<DefaultFeatureConfig> featureContext =
                                                                         new FeatureContext<>(
                                                                                 featureOpt,
@@ -50,10 +47,8 @@ public class FlowerTreeCommand {
                                                                                 config
                                                                         );
 
-                                                                // Generate the tree
                                                                 ModFeatures.BIG_FLOWER_FEATURE.generate(featureContext);
 
-                                                                // Feedback to player
                                                                 source.sendFeedback(Text.literal("Spawned Flower Jungle Structure!"), false);
                                                                 return 1;
                                                             })

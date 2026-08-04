@@ -10,10 +10,9 @@ import net.minecraft.server.world.ServerWorld;
 
 import java.util.Random;
 
-// For parrots to randomly drop the feather
+// For parrots to randomly drop the parrot feather
 public class ParrotFeatherDrop {
 
-    private static final Random RANDOM = new Random();
     private static final int DROP_INTERVAL_TICKS = 1200; // 60 seconds at 20 TPS
 
     private static int tickCounter = 0;
@@ -43,14 +42,16 @@ public class ParrotFeatherDrop {
     private static void tryDropParrotFeather(ParrotEntity parrot) {
         if (parrot.world.isClient) return; // only on server
 
-        // 1 in 5 chance every interval (can adjust)
-        if (RANDOM.nextInt(5) == 0) {
-            var pos = parrot.getBlockPos();
+        // 1 in 3 chance every interval (can adjust)
+        if (parrot.getRandom().nextInt(3) == 0) {
+            double x = parrot.getX();
+            double y = parrot.getBodyY(0.5);
+            double z = parrot.getZ();
             ItemEntity feather = new ItemEntity(
                     parrot.world,
-                    pos.getX() + 0.5,
-                    pos.getY(),
-                    pos.getZ() + 0.5,
+                    x,
+                    y,
+                    z,
                     new ItemStack(ModItems.PARROT_FEATHER)
             );
             parrot.world.spawnEntity(feather);

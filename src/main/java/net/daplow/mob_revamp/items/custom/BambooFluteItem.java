@@ -14,17 +14,17 @@ import java.util.Random;
 
 public class BambooFluteItem extends Item {
 
+    public BambooFluteItem(Settings settings) {
+        super(settings);
+    }
+
     private static final Random RANDOM = new Random();
 
     // Array of hostile mob sounds
     private static final SoundEvent[] HOSTILE_SOUNDS = new SoundEvent[]{
-            SoundEvents.ENTITY_ZOMBIE_AMBIENT,
-            SoundEvents.ENTITY_SPIDER_AMBIENT,
+            SoundEvents.ENTITY_PARROT_IMITATE_ZOMBIE,
+            SoundEvents.ENTITY_PARROT_IMITATE_SPIDER
     };
-
-    public BambooFluteItem(Settings settings) {
-        super(settings);
-    }
 
     // Called when right-clicking in the air
     // Start using the item (War Horn style animation)
@@ -56,10 +56,5 @@ public class BambooFluteItem extends Item {
         return 40; // 2 seconds
     }
 
-/*
-    // Optional: show tooltip in-game
-    @Override
-    public void appendTooltip(ItemStack stack, World world, List<Text> tooltip, TooltipContext context) {
-        tooltip.add(Text.literal("Plays a random hostile mob sound when right-clicked"));
-    }8*/
+
 }

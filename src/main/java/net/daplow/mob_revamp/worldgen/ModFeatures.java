@@ -69,8 +69,6 @@ public class ModFeatures {
                 GenerationStep.Feature.VEGETAL_DECORATION,
                 BIG_FLOWER_PLACED_KEY
         );
-
-        System.out.println("[ModStructures] BigFlowerTreeFeature registered!");
     }
 
 }

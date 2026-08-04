@@ -10,9 +10,12 @@ public class ModCommands {
     public static void register() {
 
         FlowerTreeCommand.register();
+
         CommandTesting.register();
 
         GuardianEyeCommand.register();
+
         GuardianStaffCommand.register();
+
     }
 }

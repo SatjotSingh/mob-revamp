@@ -1,14 +1,9 @@
 package net.daplow.mob_revamp.blocks.custom;
 
 import net.daplow.mob_revamp.blocks.ModBlocks;
-import net.daplow.mob_revamp.effects.ModEffects;
-import net.daplow.mob_revamp.items.ModItems;
 import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
 import net.minecraft.block.PillarBlock;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.player.PlayerEntity;
@@ -30,11 +25,12 @@ public class WitherBoneBlock extends PillarBlock {
     @Override
     public void onSteppedOn(World world, BlockPos pos, BlockState state, Entity entity) {
         super.onSteppedOn(world, pos, state, entity);
+
         if (!world.isClient) {
-            PlayerEntity player = (PlayerEntity) entity;
-            player.addStatusEffect(new StatusEffectInstance(
+
+            ((PlayerEntity)entity).addStatusEffect(new StatusEffectInstance(
                     StatusEffects.WITHER,
-                    40, //ticks (seconds*20)
+                    40, //ticks (seconds*20) so 2 seconds
                     0,
                     false,
                     false,

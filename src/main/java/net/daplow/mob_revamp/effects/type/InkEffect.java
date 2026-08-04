@@ -9,6 +9,7 @@ import net.minecraft.particle.DefaultParticleType;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
+import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import net.minecraft.particle.ParticleTypes;
 
@@ -24,76 +25,49 @@ IF Ink Effect value = 1, then Glow Ink
  */
     @Override
     public void onApplied(LivingEntity entity, AttributeContainer attributes, int amplifier) {
-        if (!entity.getWorld().isClient) {
+        World world = entity.getWorld();
+        if (world.isClient) {
             return;
         }
-        entity.getWorld().playSound(
-                null,                  // PlayerEntity: null = all nearby players
+        world.playSound(
+                null,    // PlayerEntity: null = all nearby players
                 entity.getBlockPos(),  // BlockPos where sound plays
                 SoundEvents.ENTITY_SQUID_SQUIRT,
                 SoundCategory.PLAYERS,
-                1.0f,                  // volume
-                0.9f + entity.getRandom().nextFloat() * 0.2f // pitch
+                1.0f,
+                0.9f + entity.getRandom().nextFloat() * 0.2f
         );
 
     }
 
     @Override
     public void applyUpdateEffect(LivingEntity entity, int amplifier) {
-        //System.out.println("POTION: "+entity.getEntityName());
-        /*if (!entity.getWorld().isClient()) {
-            System.out.println("POTION CLIENT: "+entity.getEntityName());
 
-            return;
-        }
-
-         */
-
-        //if (entity.getRandom().nextDouble() <0.5) {
-        //    return;
-        //}
-
-
-        //System.out.println("POTION: "+entity.getEntityName());
-
-        DefaultParticleType inkType = ParticleTypes.SQUID_INK;
-        if (amplifier ==1) {
-            inkType = ParticleTypes.GLOW_SQUID_INK;
-        }
+        DefaultParticleType inkType =
+                amplifier > 0
+                        ? ParticleTypes.GLOW_SQUID_INK
+                        : ParticleTypes.SQUID_INK;
 
         for (int i =0; i <2; i++) {
-            double offsetX = (entity.getRandom().nextDouble()-0.7) * entity.getWidth();
-            double offsetY = (entity.getRandom().nextDouble()-0.3) * entity.getHeight();
-            double offsetZ = (entity.getRandom().nextDouble()-0.7) * entity.getWidth();
             if (!entity.getWorld().isClient) {
+                Vec3d eyes = entity.getEyePos();
                 ((ServerWorld) entity.getWorld()).spawnParticles(
                         inkType,
-                        entity.getX(),
-                        entity.getY(),
-                        entity.getZ(),
-                        5, // count
-                        offsetX,
-                        offsetY,
-                        offsetZ,
+                        eyes.x,
+                        eyes.y-0.2,
+                        eyes.z,
+                        4, // count
+                        entity.getWidth() * 0.3,
+                        entity.getHeight() * 0.2,
+                        entity.getWidth() * 0.3,
                         0.02
                 );
             }
-            /*
-            entity.getWorld().addParticle(
-                    ParticleTypes.SQUID_INK,
-                    entity.getX() + offsetX,
-                    entity.getY() + offsetY,
-                    entity.getZ() +offsetZ,
-                    0.0, 0.2, 0.0
-
-            );
-
-             */
         }
 
     }
 
 
     @Override
-    public boolean canApplyUpdateEffect(int duration, int amplifier) {return true;}
+    public boolean canApplyUpdateEffect(int duration, int amplifier) {return duration % 2 == 0;}
 }

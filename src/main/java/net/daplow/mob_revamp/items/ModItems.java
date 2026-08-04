@@ -1,14 +1,14 @@
 package net.daplow.mob_revamp.items;
 
-import net.daplow.mob_revamp.effects.ModPotions;
 import net.daplow.mob_revamp.items.armor.*;
+import net.daplow.mob_revamp.items.armor.material.GuardianArmorMaterial;
+import net.daplow.mob_revamp.items.armor.material.PiglinArmorMaterial;
 import net.daplow.mob_revamp.items.custom.*;
 import net.daplow.mob_revamp.util.Recipes.GuardianStaffRecipe;
 import net.daplow.mob_revamp.util.Recipes.WingSuitElytraRecipe;
 import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.minecraft.item.*;
-import net.minecraft.potion.PotionUtil;
 import net.minecraft.recipe.SpecialRecipeSerializer;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.Rarity;
@@ -87,7 +87,7 @@ public class ModItems {
     public static final Item WITHER_BONE_MEAL = new WitherBoneMealItem(new Item.Settings().group(DAPLOW_MOB_REVAMP));
 
     // Wither Chestplate that makes you take no ranged damage
-    public static final ArmorMaterial WITHER_ARMOR = new WitherArmorMaterial();
+    public static final ArmorMaterial WITHER_ARMOR = new GuardianLeggingsItem.WitherArmorMaterial();
 
     public static final Item WITHER_CHESTPLATE = Registry.register(
             Registry.ITEM,
