@@ -2,19 +2,27 @@ package net.daplow.mob_revamp.blocks.custom;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
+import net.minecraft.client.gui.screen.Screen;
+import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.HoeItem;
+import net.minecraft.item.ItemStack;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
+import net.minecraft.text.Text;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Box;
+import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
+import org.jetbrains.annotations.Nullable;
+
+import java.util.List;
 
 @SuppressWarnings("deprecation")
 public class SculkMineBlock extends Block {
@@ -140,5 +148,22 @@ public class SculkMineBlock extends Block {
             activateSculkMine(world, pos);
         }
     }
+
+    @Override
+    public void appendTooltip(ItemStack stack, @Nullable BlockView world, List<Text> tooltip, TooltipContext options) {
+        if (Screen.hasShiftDown()) {
+            tooltip.add(Text.literal("§8- A trap that can blind"));
+            tooltip.add(Text.literal("§8  anyone in it's path..."));
+            tooltip.add(Text.literal("§6Breaking§7 (or use §6Redstone§7) to"));
+            tooltip.add(Text.literal("§7activate trap."));
+
+        } else {
+            tooltip.add(Text.literal("§7Hold §eSHIFT§7 for more info"));
+        }
+
+        super.appendTooltip(stack, world, tooltip, options);
+    }
+
+
 }
 

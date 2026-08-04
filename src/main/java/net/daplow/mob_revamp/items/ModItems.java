@@ -3,16 +3,24 @@ package net.daplow.mob_revamp.items;
 import net.daplow.mob_revamp.items.armor.*;
 import net.daplow.mob_revamp.items.armor.material.GuardianArmorMaterial;
 import net.daplow.mob_revamp.items.armor.material.PiglinArmorMaterial;
+import net.daplow.mob_revamp.items.armor.material.WitherArmorMaterial;
 import net.daplow.mob_revamp.items.custom.*;
 import net.daplow.mob_revamp.util.Recipes.GuardianStaffRecipe;
 import net.daplow.mob_revamp.util.Recipes.WingSuitElytraRecipe;
 import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
+import net.minecraft.client.gui.screen.Screen;
+import net.minecraft.client.item.TooltipContext;
 import net.minecraft.item.*;
 import net.minecraft.recipe.SpecialRecipeSerializer;
+import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.Rarity;
 import net.minecraft.util.registry.Registry;
+import net.minecraft.world.World;
+import org.jetbrains.annotations.Nullable;
+
+import java.util.List;
 
 import static net.daplow.mob_revamp.DaplowMain.MOD_ID;
 
@@ -87,7 +95,7 @@ public class ModItems {
     public static final Item WITHER_BONE_MEAL = new WitherBoneMealItem(new Item.Settings().group(DAPLOW_MOB_REVAMP));
 
     // Wither Chestplate that makes you take no ranged damage
-    public static final ArmorMaterial WITHER_ARMOR = new GuardianLeggingsItem.WitherArmorMaterial();
+    public static final ArmorMaterial WITHER_ARMOR = new WitherArmorMaterial();
 
     public static final Item WITHER_CHESTPLATE = Registry.register(
             Registry.ITEM,
@@ -102,7 +110,19 @@ public class ModItems {
     public static final Item LUCKY_CHARM = new LuckyCharmItem(new Item.Settings().group(DAPLOW_MOB_REVAMP).rarity(Rarity.RARE));
 
     // Warden Mod
-    public static final Item WARDEN_HEART = new Item(new Item.Settings().group(DAPLOW_MOB_REVAMP).rarity(Rarity.EPIC));
+    public static final Item WARDEN_HEART = new Item(new Item.Settings().group(DAPLOW_MOB_REVAMP).rarity(Rarity.EPIC)) {
+        @Override
+        public void appendTooltip(ItemStack stack, @Nullable World world, List<Text> tooltip, TooltipContext context) {
+            if (Screen.hasShiftDown()) {
+                tooltip.add(Text.literal("§8- Can be used to"));
+                tooltip.add(Text.literal("§8  craft the Warden Staff"));
+            } else {
+                tooltip.add(Text.literal("§7Hold §eSHIFT§7 for more info"));
+            }
+
+            super.appendTooltip(stack, world, tooltip, context);
+        }
+    };;
     public static final Item WARDEN_STAFF = new WardenStaffItem(new Item.Settings().group(DAPLOW_MOB_REVAMP).maxCount(1).maxDamage(128).rarity(Rarity.EPIC));
 
 

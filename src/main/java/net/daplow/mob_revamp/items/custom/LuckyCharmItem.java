@@ -1,5 +1,7 @@
 package net.daplow.mob_revamp.items.custom;
 
+import net.minecraft.client.gui.screen.Screen;
+import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.player.PlayerEntity;
@@ -8,10 +10,14 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
+import net.minecraft.text.Text;
 import net.minecraft.util.Hand;
 import net.minecraft.util.TypedActionResult;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
+import org.jetbrains.annotations.Nullable;
+
+import java.util.List;
 
 public class LuckyCharmItem extends Item {
     public LuckyCharmItem(Settings settings) {
@@ -71,5 +77,20 @@ public class LuckyCharmItem extends Item {
         }
         return TypedActionResult.success(stack, world.isClient);
 
+    }
+
+
+    @Override
+    public void appendTooltip(ItemStack stack, @Nullable World world, List<Text> tooltip, TooltipContext context) {
+        if (Screen.hasShiftDown()) {
+            tooltip.add(Text.literal("§8- A super lucky item"));
+            tooltip.add(Text.literal("§6Right-click§7 to get"));
+            tooltip.add(Text.literal("§7the luck effect!"));
+
+        } else {
+            tooltip.add(Text.literal("§7Hold §eSHIFT§7 for more info"));
+        }
+
+        super.appendTooltip(stack, world, tooltip, context);
     }
 }

@@ -1,5 +1,7 @@
 package net.daplow.mob_revamp.items.custom;
 
+import net.minecraft.client.gui.screen.Screen;
+import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.damage.DamageSource;
@@ -11,12 +13,14 @@ import net.minecraft.particle.ParticleTypes;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
+import net.minecraft.text.Text;
 import net.minecraft.util.Hand;
 import net.minecraft.util.TypedActionResult;
 import net.minecraft.util.UseAction;
 import net.minecraft.util.math.Box;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 import java.util.Objects;
@@ -177,5 +181,20 @@ public class WardenStaffItem extends Item {
         return false;
     }
 
+
+    @Override
+    public void appendTooltip(ItemStack stack, @Nullable World world, List<Text> tooltip, TooltipContext context) {
+        if (Screen.hasShiftDown()) {
+            tooltip.add(Text.literal("§8- The most POWERFUL Staff"));
+            tooltip.add(Text.literal("§8  in Minecraft..."));
+            tooltip.add(Text.literal("§7Hold §6Right-click§7 to"));
+            tooltip.add(Text.literal("§7release a Sonic Boom."));
+
+        } else {
+            tooltip.add(Text.literal("§7Hold §eSHIFT§7 for more info"));
+        }
+
+        super.appendTooltip(stack, world, tooltip, context);
+    }
 
 }
