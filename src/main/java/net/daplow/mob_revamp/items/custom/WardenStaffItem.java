@@ -20,6 +20,7 @@ import net.minecraft.world.World;
 
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 
 public class WardenStaffItem extends Item {
     public WardenStaffItem(Settings settings) {
@@ -64,28 +65,27 @@ public class WardenStaffItem extends Item {
         if (!world.isClient) {
 
 
-            int RANGE = 20;
+            int RANGE = 35;
 
 
             Vec3d start = user.getEyePos();
             Vec3d look = user.getRotationVec(1.0f);
             Vec3d end  = start.add(look.multiply(RANGE));
 
-            Box box = user.getBoundingBox().stretch(look.multiply(RANGE)).expand(1.0);
+            Box box = user.getBoundingBox().stretch(look.multiply(RANGE)).expand(2.0);
 
             List<Entity> entities = world.getOtherEntities(
                     user,
                     box,
                     entity -> entity instanceof LivingEntity && entity.isAlive()
             );
-            //System.out.println("Right Clicked on Guardian Staff");
 
-            for (int i = 0; i < RANGE; i++) {
+            for (int i = 2; i < RANGE; i++) {
 
-                Vec3d pos = start.add(look.multiply(i*0.5));
-
+                Vec3d pos = start.add(look.multiply(i));
+                // Sculk Charge Pop, or Sonic Boom
                 ((ServerWorld)world).spawnParticles(
-                        ParticleTypes.SCULK_CHARGE_POP,
+                        ParticleTypes.SONIC_BOOM,
                         pos.x,
                         pos.y,
                         pos.z,
@@ -114,11 +114,16 @@ public class WardenStaffItem extends Item {
                     Vec3d closestPoint = start.add(look.multiply(projection));
 
                     // distance from beam center
-                    double distance = entity.getPos().distanceTo(closestPoint);
+                    Optional<Vec3d> hit =
+                            entity.getBoundingBox()
+                                    .expand(0.5)
+                                    .raycast(start, end);
 
-                    if (distance > 1.0) continue; // beam thickness
+                    if (hit.isEmpty()) {
+                        continue;
+                    }
 
-                    float DAMAGE = 15;
+                    float DAMAGE = 35;
                     long time = world.getTime() % 24000;
 
                     if (time >= 13000 && time < 23000){
