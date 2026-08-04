@@ -1,13 +1,19 @@
 package net.daplow.mob_revamp.items.custom;
 
+import net.minecraft.client.gui.screen.Screen;
+import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.particle.ParticleTypes;
+import net.minecraft.text.Text;
 import net.minecraft.util.Hand;
 import net.minecraft.util.TypedActionResult;
 import net.minecraft.world.World;
 import net.minecraft.util.math.Vec3d;
+import org.jetbrains.annotations.Nullable;
+
+import java.util.List;
 
 public class BatWingItem extends Item {
 
@@ -48,6 +54,19 @@ public class BatWingItem extends Item {
         }
 
         return TypedActionResult.success(stack);
+    }
+    @Override
+    public void appendTooltip(ItemStack stack, @Nullable World world, List<Text> tooltip, TooltipContext context) {
+        if (Screen.hasShiftDown()) {
+            tooltip.add(Text.literal("§8- Can be used to"));
+            tooltip.add(Text.literal("§8  craft the Wing Suit"));
+            tooltip.add(Text.literal("§6Right-click§7 to get"));
+            tooltip.add(Text.literal("§7a boost in speed."));
 
+        } else {
+            tooltip.add(Text.literal("§7Hold §eSHIFT§7 for more info"));
+        }
+
+        super.appendTooltip(stack, world, tooltip, context);
     }
 }

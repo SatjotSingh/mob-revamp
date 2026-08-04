@@ -1,60 +1,33 @@
 package net.daplow.mob_revamp.items.armor;
 
-import net.daplow.mob_revamp.items.ModItems;
+import net.minecraft.client.gui.screen.Screen;
+import net.minecraft.client.item.TooltipContext;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EquipmentSlot;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ArmorItem;
 import net.minecraft.item.ArmorMaterial;
-import net.minecraft.item.ArmorMaterials;
-import net.minecraft.recipe.Ingredient;
-import net.minecraft.sound.SoundEvent;
-import net.minecraft.sound.SoundEvents;
+import net.minecraft.item.ItemStack;
+import net.minecraft.text.Text;
+import net.minecraft.world.World;
+import org.jetbrains.annotations.Nullable;
+
+import java.util.List;
 
 public class GuardianLeggingsItem extends ArmorItem {
     public GuardianLeggingsItem(ArmorMaterial material, Settings settings) {
         super(material, EquipmentSlot.LEGS, settings);
     }
 
-    public static class WitherArmorMaterial implements ArmorMaterial {
-
-        @Override
-        public int getDurability(EquipmentSlot slot) {
-            return ArmorMaterials.IRON.getDurability(slot);
+    @Override
+    public void appendTooltip(ItemStack stack, @Nullable World world, List<Text> tooltip, TooltipContext context) {
+        if (Screen.hasShiftDown()) {
+            tooltip.add(Text.literal("§7- Equip for Thorns"));
+        } else {
+            tooltip.add(Text.literal("§7Hold §eSHIFT§7 for more info"));
         }
 
-        @Override
-        public int getProtectionAmount(EquipmentSlot slot) {
-            return ArmorMaterials.DIAMOND.getProtectionAmount(slot);
-        }
-
-
-        @Override
-        public int getEnchantability() {
-            return ArmorMaterials.DIAMOND.getEnchantability();
-        }
-
-        @Override
-        public SoundEvent getEquipSound() {
-            return SoundEvents.ITEM_ARMOR_EQUIP_GOLD;
-        }
-
-        @Override
-        public Ingredient getRepairIngredient() {
-            return Ingredient.ofItems(ModItems.WITHER_BONE);
-        }
-
-        @Override
-        public String getName() {
-            return "daplow-mob_revamp:wither";
-        }
-
-        @Override
-        public float getToughness() {
-            return 0.0F;
-        }
-
-        @Override
-        public float getKnockbackResistance() {
-            return 0.0F;
-        }
+        super.appendTooltip(stack, world, tooltip, context);
     }
+
 }

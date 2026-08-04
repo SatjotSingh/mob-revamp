@@ -1,5 +1,7 @@
 package net.daplow.mob_revamp.items.custom;
 
+import net.minecraft.client.gui.screen.Screen;
+import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.damage.DamageSource;
@@ -21,6 +23,7 @@ import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.util.math.Box;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 import java.util.Objects;
@@ -250,5 +253,45 @@ public class GuardianStaffItem extends Item {
         return false;
     }
 
+    @Override
+    public void appendTooltip(ItemStack stack, @Nullable World world, List<Text> tooltip, TooltipContext context) {
+        if (Screen.hasShiftDown()) {
+            if (!stack.hasNbt()) {
+                return;
+            }
 
+            String variant = stack.getNbt().getString("Eye_Variant");
+
+            switch (variant) {
+                case "red":
+                    tooltip.add(Text.literal("§8- The eye with Power."));
+                    break;
+                case "orange", "yellow":
+                    tooltip.add(Text.literal("§8- The eye with Speed."));
+                    break;
+
+                case "green":
+                    tooltip.add(Text.literal("§8- The eye extra life."));
+                    break;
+
+                case "blue":
+                    tooltip.add(Text.literal("§8- A basic eye."));
+                    break;
+
+                case "purple":
+                    tooltip.add(Text.literal("§8- The eye with Distance."));
+                    break;
+
+                default:
+                    tooltip.add(Text.literal("§8- An unknown eye."));
+            }
+            tooltip.add(Text.literal("§7Hold §6Right-click§7 to"));
+            tooltip.add(Text.literal("§7shoot Guardian Lazers."));
+
+        } else {
+            tooltip.add(Text.literal("§7Hold §eSHIFT§7 for more info"));
+        }
+
+        super.appendTooltip(stack, world, tooltip, context);
+    }
 }
