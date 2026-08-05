@@ -2,8 +2,8 @@
 	"schemaVersion": 1,
 	"id": "daplow-mob_revamp",
 	"version": "${version}",
-	"name": "Daplow Mob_Revamp",
-	"description": "This mob revamps minecraft mobs to be more useful (DAPLOW)!",
+	"name": "Daplow's Mob Revamp",
+	"description": "This Mod makes Revamps Vanilla Minecraft Mobs (Daplow)",
 	"authors": [
 		"Daplow"
 	],
@@ -11,7 +11,7 @@
 		"homepage": "https://modrinth.com/mod/daplow-mob-revamp",
 		"youtube": "https://www.youtube.com/@Daplow111"
 	},
-	"license": "MIT",
+	"license": "All Rights Reserved",
 	"icon": "assets/daplow-mob_revamp/icon.png",
 	"environment": "*",
 	"entrypoints": {
